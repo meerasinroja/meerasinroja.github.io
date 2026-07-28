@@ -50,6 +50,8 @@
 }
 
 :root {
+  /* Always-light design: blocks Chrome's Auto Dark Mode from repainting the site dark. */
+  color-scheme: only light;
   --radius: 0.25rem;
   --background: oklch(0.97 0.01 80);
   --foreground: oklch(0.2 0.01 80);
