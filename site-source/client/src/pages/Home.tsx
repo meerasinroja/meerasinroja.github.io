@@ -196,7 +196,7 @@ export default function Home() {
               What I do for you
             </h2>
             <p className="text-[#2a2a2a] text-lg">
-              Reliable. Consistent. A presence that keeps your business growing. Specializing in long-term client retention and satisfaction for 7 years.
+              Reliable. Consistent. A presence that keeps your business growing. The only place that actually incorporates solution selling to your customers to make them buy more from you. Specializing in long-term client retention and satisfaction for 7 years, with the highest rate of retention.
             </p>
           </div>
 
@@ -351,6 +351,12 @@ export default function Home() {
             <div>
               <p className="font-bold text-[#2a2a2a]">Ben Yildrim</p>
               <p className="text-[#2a2a2a] text-sm">Owner, German Gastro — Multi-location hospitality group, LA</p>
+            </div>
+            <blockquote className="text-xl md:text-2xl text-[#2a2a2a] leading-relaxed mb-6 mt-14" style={{ fontFamily: "'Playfair Display', serif" }}>
+              "Meera is easily the top 3 social media managers in LA"
+            </blockquote>
+            <div>
+              <p className="font-bold text-[#2a2a2a]">Rutu S</p>
             </div>
           </div>
         </div>
