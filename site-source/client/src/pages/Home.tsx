@@ -103,6 +103,12 @@ export default function Home() {
                 <br />
                 <span className="text-[#c17f4a]">connect with customers.</span>
               </h1>
+              <p className="text-xl md:text-2xl font-bold text-[#2a2a2a] leading-snug mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                The only place that actually incorporates solution selling to your customers to make them buy more from you.
+              </p>
+              <p className="inline-block bg-[#c17f4a] text-white text-base md:text-lg font-bold px-5 py-2.5 rounded-full mb-6">
+                Highest rate of retention
+              </p>
               <p className="text-[#2a2a2a] text-lg max-w-md leading-relaxed mb-8">
                 I manage your social media and run your Facebook ads so your customers can find you.
               </p>
@@ -196,7 +202,7 @@ export default function Home() {
               What I do for you
             </h2>
             <p className="text-[#2a2a2a] text-lg">
-              Reliable. Consistent. A presence that keeps your business growing. The only place that actually incorporates solution selling to your customers to make them buy more from you. Specializing in long-term client retention and satisfaction for 7 years, with the highest rate of retention.
+              Reliable. Consistent. A presence that keeps your business growing. Specializing in long-term client retention and satisfaction for 7 years.
             </p>
           </div>
 
