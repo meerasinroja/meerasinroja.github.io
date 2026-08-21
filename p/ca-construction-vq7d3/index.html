@@ -140,7 +140,7 @@
     }
   </style>
   <script>window.MS_SLUG = "ca-construction";</script>
-  <script src="/ms-analytics.js?v=2" defer></script>
+  <script src="/ms-analytics.js?v=3" defer></script>
 </head>
 <body>
 
@@ -313,12 +313,13 @@
             var f = document.getElementById("replyForm"), btn = document.getElementById("replyBtn"), st = document.getElementById("replyStatus");
             f.addEventListener("submit", function (ev) {
               ev.preventDefault();
-              var d = { slug: window.MS_SLUG || "", name: f.name.value, email: f.email.value, message: f.message.value, website: f.website.value };
+              var own = 0; try { own = localStorage.getItem("ms_owner") === "1" ? 1 : 0; } catch (e) {}
+              var d = { slug: window.MS_SLUG || "", name: f.name.value, email: f.email.value, message: f.message.value, website: f.website.value, owner: own };
               btn.disabled = true; btn.textContent = "Sending…"; st.textContent = "";
               fetch("https://brandhub-pro-claude-production.up.railway.app/api/page-reply", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(d) })
                 .then(function (r) { return r.json(); })
                 .then(function (j) {
-                  if (j && j.ok) { st.textContent = "Sent. Meera will reply to " + d.email + "."; st.className = "reply-status ok"; f.reset(); btn.textContent = "Sent"; }
+                  if (j && j.ok) { st.textContent = j.test ? "Sent as your own test (not counted on the lead)." : "Sent. Meera will reply to " + d.email + "."; st.className = "reply-status ok"; f.reset(); btn.textContent = "Sent"; }
                   else { throw new Error((j && j.error) || "failed"); }
                 })
                 .catch(function (e) { st.textContent = (e && e.message && e.message !== "failed") ? e.message : "Could not send right now. Please email meera@meerasocial.com directly."; st.className = "reply-status err"; btn.disabled = false; btn.textContent = "Send to Meera"; });

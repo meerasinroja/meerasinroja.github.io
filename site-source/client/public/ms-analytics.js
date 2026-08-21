@@ -17,6 +17,11 @@
     if (P0.get("me") === "1" || P0.get("heat") === "1") localStorage.setItem("ms_owner", "1");
     isOwner = localStorage.getItem("ms_owner") === "1";
   } catch (e) {}
+  // A ?me=1 / ?heat=1 visit also registers the NETWORK it came from as hers (server keeps the
+  // IP), so her other devices on the same wifi stop counting too.
+  if (P0.get("me") === "1" || P0.get("heat") === "1") {
+    try { navigator.sendBeacon(API + "/api/page-analytics", new Blob([JSON.stringify({ slug: SLUG, vid: vid, owner: 1, events: [] })], { type: "text/plain" })); } catch (e) {}
+  }
   var q = [], flushT = null;
   function flush() {
     if (flushT) { clearTimeout(flushT); flushT = null; }
