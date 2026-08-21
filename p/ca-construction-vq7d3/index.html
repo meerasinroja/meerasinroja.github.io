@@ -23,7 +23,9 @@
     .hl-green { background: rgba(34,125,62,.22); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .15em; }
     .hl-red { background: rgba(175,26,26,.19); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .18em; text-transform: uppercase; }
     [hidden] { display: none !important; } /* sections she hid 2026-08-21 — drop the attribute to bring one back */
-    .eyebrow-green { font-size: 24px; }
+    .eyebrow-green, .eyebrow-h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.4vw, 40px); font-weight: 700; letter-spacing: 0; line-height: 1.12; margin-bottom: 16px; }
+    .eyebrow-green { color: #221e18; }
+    .eyebrow-h2 { color: #f9f3e8; }
     .strike-red { text-decoration: line-through; text-decoration-color: #af1a1a; text-decoration-thickness: 1.5px; }
     h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; color: #221e18; line-height: 1.12; }
     h1 { font-size: clamp(38px, 6vw, 60px); }
@@ -42,10 +44,14 @@
     .hero p.body { color: #5a5348; font-size: 14.5px; max-width: 470px; margin-bottom: 26px; }
     .hero-visual { position: relative; }
     .hero-card { background: #fff; border-radius: 18px; padding: 12px; box-shadow: 0 18px 50px rgba(90,70,40,.16); position: relative; z-index: 2; }
-    .hero-img { border-radius: 12px; height: 320px; background:
-      radial-gradient(140% 100% at 20% 0%, #e8d9c2 0%, rgba(0,0,0,0) 55%),
-      radial-gradient(120% 120% at 90% 100%, #b9884c33 0%, rgba(0,0,0,0) 60%),
-      linear-gradient(160deg, #f2e7d6 0%, #dbc4a2 55%, #c8a87c 100%); }
+    .hero-img { display: block; width: 100%; height: auto; aspect-ratio: 335 / 460; border-radius: 12px; object-fit: cover; object-position: center top; }
+    /* Speech bubble — big, bold, pastel green with a dark outline + tail, sits over the photo */
+    .bubble { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); width: 86%; background: #cfe9d3; border: 4px solid #1a1a1a; border-radius: 22px; padding: 16px 18px; text-align: center; z-index: 4; box-shadow: 0 12px 30px rgba(0,0,0,.25); }
+    .bubble span { display: block; font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(24px, 3.4vw, 34px); line-height: 1.12; color: #1a1a1a; text-transform: uppercase; letter-spacing: .01em; }
+    .bubble em { font-style: normal; color: #227d3e; }
+    /* tail points UP at the two of them (bubble sits over the ground at the bottom, never over their sign) */
+    .bubble::after { content: ""; position: absolute; left: 62%; top: -26px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-bottom: 26px solid #1a1a1a; transform: translateX(-50%); }
+    .bubble::before { content: ""; position: absolute; left: 62%; top: -18px; width: 0; height: 0; border-left: 13px solid transparent; border-right: 13px solid transparent; border-bottom: 20px solid #cfe9d3; transform: translateX(-50%); z-index: 1; }
     .focus-chip { position: absolute; top: 26px; right: -14px; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 10px 30px rgba(90,70,40,.18); z-index: 3; }
     .focus-chip .k { font-size: 10px; letter-spacing: .12em; color: #b9884c; font-weight: 700; }
     .focus-chip .v { font-size: 13px; font-weight: 700; color: #221e18; }
@@ -168,9 +174,9 @@
         </div>
         <div class="hero-visual">
           <div class="hero-card">
-            <div class="hero-img"></div>
-            <div class="focus-chip"><span class="k">FOCUS</span><br /><span class="v">Protect the investment</span></div>
-            <div class="hero-dot">&#8862;</div>
+            <img class="hero-img" src="hero.jpg" alt="CA Construction Group on site" />
+            <!-- Her order 2026-08-21: big speech bubble over the photo, impossible to miss -->
+            <div class="bubble"><span>We protect <em>your</em> investment!</span></div>
           </div>
         </div>
       </div>
@@ -255,7 +261,7 @@
     <div class="wrap">
       <div class="split">
         <div>
-          <p class="eyebrow">Ad diagnosis</p>
+          <p class="eyebrow eyebrow-h2">Ad diagnosis</p>
           <h2>Why the ads likely have not worked.</h2>
         </div>
         <p class="muted" style="padding-top:38px;">The ads and content may sound generic instead of focusing on what makes CA Construction different. An ad that says, &ldquo;Need a backyard home? Get a free quote,&rdquo; attracts people looking for the cheapest price. Those people compare several builders and choose the lowest bid.</p>
