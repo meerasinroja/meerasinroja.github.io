@@ -52,7 +52,7 @@
   }, { passive: true });
   window.addEventListener("click", function (ev) {
     push({ t: "c", x: ev.pageX / docW(), y: ev.pageY / docH() });
-    var a = ev.target && ev.target.closest ? ev.target.closest('a[href^="mailto:"]') : null;
+    var a = ev.target && ev.target.closest ? ev.target.closest('a[href^="mailto:"],a[href^="tel:"],a[href^="sms:"]') : null; // any call/text/email tap counts as reaching back
     if (a) { push({ t: "e" }); flush(); }
   }, true);
   function goodbye() { push({ t: "s", sp: maxSp }); flush(); }

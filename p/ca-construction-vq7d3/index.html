@@ -119,6 +119,8 @@
     .reply-form .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
     .reply-form button { align-self: center; border: 0; cursor: pointer; margin-top: 4px; }
     .reply-form button:disabled { opacity: .6; cursor: default; }
+    .contact-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .contact-row .btn { font-size: 16px; padding: 15px 26px; min-width: 170px; justify-content: center; }
     .reply-status { text-align: center; font-size: 13.5px; font-weight: 600; min-height: 1.2em; }
     .reply-status.ok { color: #227d3e; }
     .reply-status.err { color: #af1a1a; }
@@ -142,7 +144,7 @@
     }
   </style>
   <script>window.MS_SLUG = "ca-construction";</script>
-  <script src="/ms-analytics.js?v=3" defer></script>
+  <script src="/ms-analytics.js?v=4" defer></script>
 </head>
 <body>
 
@@ -298,36 +300,13 @@
       <div class="box">
         <p class="eyebrow">Ready when you are</p>
         <h2>Want to talk this through?</h2>
-        <p class="sub">Write to me right here and I will walk you through the strategy and what the first month looks like.</p>
-        <form class="reply-form" id="replyForm" autocomplete="on">
-          <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" />
-          <div class="row2">
-            <input type="text" name="name" placeholder="Your name" required />
-            <input type="email" name="email" placeholder="Your email" required />
-          </div>
-          <textarea name="message" rows="4" placeholder="Your message to Meera" required></textarea>
-          <button type="submit" class="btn btn-gold" id="replyBtn">Send to Meera</button>
-          <p class="reply-status" id="replyStatus"></p>
-        </form>
-        <p style="margin-top:16px;font-size:13px;color:#6b6357;">Or email directly: <a href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social%20%E2%80%94%20Marketing%20Diagnosis" style="color:#b9884c;font-weight:600;">meera@meerasocial.com</a> &middot; (323) 747-4097</p>
-        <script>
-          (function () {
-            var f = document.getElementById("replyForm"), btn = document.getElementById("replyBtn"), st = document.getElementById("replyStatus");
-            f.addEventListener("submit", function (ev) {
-              ev.preventDefault();
-              var own = 0; try { own = localStorage.getItem("ms_owner") === "1" ? 1 : 0; } catch (e) {}
-              var d = { slug: window.MS_SLUG || "", name: f.name.value, email: f.email.value, message: f.message.value, website: f.website.value, owner: own };
-              btn.disabled = true; btn.textContent = "Sending…"; st.textContent = "";
-              fetch("https://brandhub-pro-claude-production.up.railway.app/api/page-reply", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(d) })
-                .then(function (r) { return r.json(); })
-                .then(function (j) {
-                  if (j && j.ok) { st.textContent = j.test ? "Sent as your own test (not counted on the lead)." : "Sent. Meera will reply to " + d.email + "."; st.className = "reply-status ok"; f.reset(); btn.textContent = "Sent"; }
-                  else { throw new Error((j && j.error) || "failed"); }
-                })
-                .catch(function (e) { st.textContent = (e && e.message && e.message !== "failed") ? e.message : "Could not send right now. Please email meera@meerasocial.com directly."; st.className = "reply-status err"; btn.disabled = false; btn.textContent = "Send to Meera"; });
-            });
-          })();
-        </script>
+        <p class="sub">One tap. Call, text, or email me and I will walk you through the strategy and what the first month looks like.</p>
+        <div class="contact-row">
+          <a class="btn btn-gold" href="tel:+13237474097">&#9742; Call Meera</a>
+          <a class="btn btn-gold" href="sms:+13237474097?&body=Hi%20Meera%2C%20this%20is%20CA%20Construction%20about%20the%20marketing%20diagnosis.">&#128172; Text Meera</a>
+          <a class="btn btn-gold" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social%20%E2%80%94%20Marketing%20Diagnosis&body=Hi%20Meera%2C%0A%0A">&#9993; Email Meera</a>
+        </div>
+        <p style="margin-top:18px;font-size:14px;color:#6b6357;font-weight:600;">(323) 747-4097 &middot; meera@meerasocial.com</p>
       </div>
     </div>
   </section>
