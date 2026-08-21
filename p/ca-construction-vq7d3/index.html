@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <meta name="color-scheme" content="only light" />
-  <title>CA Construction Group · Sales Diagnosis</title>
+  <title>CA Construction Group · Marketing Diagnosis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
@@ -14,7 +14,15 @@
     body { background: #faf6ef; color: #221e18; font-family: 'DM Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
     .wrap { max-width: 1020px; margin: 0 auto; padding: 0 22px; position: relative; }
     .serif { font-family: 'Playfair Display', serif; }
-    .eyebrow { color: #b9884c; font-size: 12px; font-weight: 600; letter-spacing: .06em; margin-bottom: 14px; }
+    /* Her order 2026-08-20: every section label in CAPS, bigger, bold. */
+    .eyebrow { color: #b9884c; font-size: 16px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
+    .eyebrow-hero { font-size: 20px; }
+    .eyebrow-big { font-size: 22px; color: #221e18; display: flex; align-items: center; gap: 10px; }
+    .tick { display: inline-flex; width: 28px; height: 28px; border-radius: 50%; background: #227d3e; color: #fff; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+    .strength-label { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #221e18; margin-bottom: 10px; }
+    .hl-green { background: rgba(34,125,62,.22); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .15em; }
+    .hl-red { background: rgba(175,26,26,.19); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .18em; text-transform: uppercase; }
+    .strike-red { text-decoration: line-through; text-decoration-color: #af1a1a; text-decoration-thickness: 3px; }
     h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; color: #221e18; line-height: 1.12; }
     h1 { font-size: clamp(38px, 6vw, 60px); }
     h2 { font-size: clamp(28px, 4.4vw, 40px); }
@@ -45,7 +53,7 @@
     .stats { background: #fff; border-top: 1px solid rgba(34,30,24,.06); border-bottom: 1px solid rgba(34,30,24,.06); padding: 40px 0; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
     .stat .n { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: #8a6a3c; }
-    .stat .l { font-size: 11.5px; color: #6b6357; margin-top: 3px; }
+    .stat .l { font-size: 14px; font-weight: 700; color: #3d372f; margin-top: 4px; }
     /* generic split section */
     .split { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: start; }
     .muted { color: #5a5348; font-size: 14.5px; }
@@ -54,7 +62,7 @@
     .cards3 > div { padding: 26px 22px; }
     .cards3 > div + div { border-left: 1px solid rgba(34,30,24,.08); }
     .icon-dot { width: 30px; height: 30px; border-radius: 8px; background: #f3e3cd; color: #b9884c; display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 12px; }
-    .cards3 h3 { font-size: 14.5px; margin-bottom: 6px; }
+    .cards3 h3 { font-size: 14.5px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .04em; }
     .cards3 p { font-size: 13px; color: #6b6357; }
     /* customer panel */
     .panel { background: #fdf9f2; border-radius: 22px; box-shadow: 0 18px 50px rgba(90,70,40,.10); padding: 52px 56px; max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
@@ -64,7 +72,7 @@
     /* issue */
     .center { text-align: center; }
     .issue-quote { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.4vw, 30px); font-weight: 700; margin: 22px auto 14px; max-width: 560px; }
-    .issue-body { max-width: 520px; margin: 0 auto; font-size: 13.5px; color: #5a5348; }
+    .issue-body { max-width: 520px; margin: 0 auto; font-size: 14px; font-weight: 700; color: #221e18; }
     .comp-table { background: #fff; border-radius: 14px; box-shadow: 0 14px 40px rgba(90,70,40,.10); max-width: 700px; margin: 40px auto 0; overflow: hidden; }
     .comp-row { display: grid; grid-template-columns: 170px 1fr; gap: 14px; padding: 14px 20px; font-size: 12.5px; }
     .comp-row + .comp-row { border-top: 1px solid rgba(34,30,24,.07); }
@@ -131,8 +139,9 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <p class="eyebrow">CA Construction Group · Sales Diagnosis</p>
-          <h1>The builder you hire when mistakes are too expensive.</h1>
+          <p class="eyebrow eyebrow-hero">CA Construction Group · Marketing Diagnosis</p>
+          <p class="strength-label">Strength in one sentence</p>
+          <h1><span class="hl-green">The builder you hire when mistakes are too expensive.</span></h1>
           <p class="lede">CA Construction Group should be the company homeowners trust with their major remodeling and backyard&#8209;home projects.</p>
           <span class="pill">Build trust before asking for the quote</span>
           <p class="body">People spending serious money on their home are not looking for the cheapest builder. They are looking for proof that the work will be done properly, that the project will pass inspection, and that their investment will be protected.</p>
@@ -156,10 +165,10 @@
   <div class="stats">
     <div class="wrap">
       <div class="stats-grid">
-        <div class="stat"><div class="n">$100K+</div><div class="l">Major home investment</div></div>
-        <div class="stat"><div class="n">$500K</div><div class="l">High-value project decision</div></div>
-        <div class="stat"><div class="n">6 weeks</div><div class="l">Speed promise from a competitor</div></div>
-        <div class="stat"><div class="n">4</div><div class="l">Clear competitor positions</div></div>
+        <div class="stat"><div class="n">$100K+</div><div class="l">is a major home investment</div></div>
+        <div class="stat"><div class="n">$500K</div><div class="l">is a high-value project decision</div></div>
+        <div class="stat"><div class="n">6 weeks</div><div class="l">is a speed promise from your competitors</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">different competitors of yours analyzed below</div></div>
       </div>
     </div>
   </div>
@@ -169,7 +178,7 @@
     <div class="wrap">
       <div class="split">
         <div>
-          <p class="eyebrow">What CA Construction already has</p>
+          <p class="eyebrow eyebrow-big"><span class="tick">&#10004;</span> What CA Construction already has</p>
           <h2>The strengths are real. The message needs to make them obvious.</h2>
         </div>
         <p class="muted" style="padding-top:38px;">CA Construction Group says it handles projects from plans and city permits through construction and the final inspection. It also says it prioritizes the important work behind the walls&mdash;foundation, plumbing, electrical, and other structural work&mdash;before cosmetic finishes.</p>
@@ -213,8 +222,8 @@
   <!-- Current issue -->
   <section class="center">
     <div class="wrap">
-      <h2>Current issue / gap in selling</h2>
-      <p class="issue-quote">&ldquo;We do quality work. We handle the process. Call&nbsp;us.&rdquo;</p>
+      <h2><span class="hl-red">Current issue / gap in selling</span></h2>
+      <p class="issue-quote"><span class="strike-red">&ldquo;We do quality work. We handle the process. Call&nbsp;us.&rdquo;</span></p>
       <p class="issue-body">That message is too vague because every builder says they do quality work. Right now, CA Construction Group sounds too much like every other builder and does not clearly show its competitive advantage.</p>
       <div class="comp-table">
         <div class="comp-row"><span class="who">NEO Builders</span><span class="what">They sell speed: backyard homes built fast, with some projects claimed to take about six weeks.</span></div>
@@ -294,13 +303,13 @@
         <p class="eyebrow">Ready when you are</p>
         <h2>Want to talk this through?</h2>
         <p class="sub">Email me back and I will walk you through the strategy and what the first month looks like.</p>
-        <a class="btn btn-gold" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social%20%E2%80%94%20Sales%20Diagnosis">Email Meera back</a>
+        <a class="btn btn-gold" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social%20%E2%80%94%20Marketing%20Diagnosis">Email Meera back</a>
         <p style="margin-top:14px;font-size:13px;color:#6b6357;">meera@meerasocial.com &middot; (323) 747-4097</p>
       </div>
     </div>
   </section>
 
-  <footer>CA Construction Group &middot; Sales Diagnosis &middot; Prepared by Meera Social</footer>
+  <footer>CA Construction Group &middot; Marketing Diagnosis &middot; Prepared by Meera Social</footer>
 
 </body>
 </html>
