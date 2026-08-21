@@ -10,6 +10,13 @@
     if (!vid) { vid = Math.random().toString(36).slice(2) + Date.now().toString(36); localStorage.setItem("ms_vid", vid); }
   } catch (e) { vid = "anon"; }
 
+  // Her own browsers never count as brand views: opening any page once with ?me=1 (or the
+  // ?heat=1 heat-map view) marks this browser as the owner and it stops reporting for good.
+  var P0 = new URLSearchParams(location.search), isOwner = false;
+  try {
+    if (P0.get("me") === "1" || P0.get("heat") === "1") localStorage.setItem("ms_owner", "1");
+    isOwner = localStorage.getItem("ms_owner") === "1";
+  } catch (e) {}
   var q = [], flushT = null;
   function flush() {
     if (flushT) { clearTimeout(flushT); flushT = null; }
@@ -19,7 +26,7 @@
     try { sent = navigator.sendBeacon(API + "/api/page-analytics", new Blob([payload], { type: "text/plain" })); } catch (e) {}
     if (!sent) { try { fetch(API + "/api/page-analytics", { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: payload, keepalive: true }); } catch (e) {} }
   }
-  function push(e) { q.push(e); if (q.length >= 40) flush(); else if (!flushT) flushT = setTimeout(flush, 4000); }
+  function push(e) { if (isOwner) return; q.push(e); if (q.length >= 40) flush(); else if (!flushT) flushT = setTimeout(flush, 4000); }
   function docH() { return Math.max(document.documentElement.scrollHeight, 1); }
   function docW() { return Math.max(document.documentElement.scrollWidth, 1); }
 
