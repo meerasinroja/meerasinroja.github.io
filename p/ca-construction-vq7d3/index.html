@@ -22,6 +22,8 @@
     .strength-label { font-size: 13px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #221e18; margin-bottom: 10px; }
     .hl-green { background: rgba(34,125,62,.22); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .15em; }
     .hl-red { background: rgba(175,26,26,.19); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .18em; text-transform: uppercase; }
+    [hidden] { display: none !important; } /* sections she hid 2026-08-21 — drop the attribute to bring one back */
+    .eyebrow-green { font-size: 24px; }
     .strike-red { text-decoration: line-through; text-decoration-color: #af1a1a; text-decoration-thickness: 1.5px; }
     h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; color: #221e18; line-height: 1.12; }
     h1 { font-size: clamp(38px, 6vw, 60px); }
@@ -84,11 +86,11 @@
     .dark .muted { color: rgba(244,237,225,.75); }
     /* shift table */
     .shift-table { background: #fff; border-radius: 14px; box-shadow: 0 14px 40px rgba(90,70,40,.10); overflow: hidden; margin-top: 36px; }
-    .shift-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; background: #f6ead7; padding: 12px 22px; font-size: 11px; font-weight: 700; letter-spacing: .08em; color: #8a6a3c; }
-    .shift-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; padding: 15px 22px; font-size: 13px; }
+    .shift-head { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; background: #f6ead7; padding: 14px 22px; font-size: 16px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #6e5430; }
+    .shift-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; padding: 15px 22px; font-size: 15.5px; font-weight: 700; }
     .shift-row + .shift-row { border-top: 1px solid rgba(34,30,24,.07); }
     .shift-row .from { color: #4a443b; background: rgba(175,26,26,.14); border-radius: 8px; padding: 8px 10px; }
-    .shift-row .to { color: #221e18; font-weight: 500; background: rgba(34,125,62,.16); border-radius: 8px; padding: 8px 10px; }
+    .shift-row .to { color: #221e18; font-weight: 700; background: rgba(34,125,62,.16); border-radius: 8px; padding: 8px 10px; }
     .big-quote { background: #f6e7d2; border-radius: 14px; padding: 30px 34px; margin-top: 34px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(17px, 2.4vw, 21px); line-height: 1.5; color: #221e18; }
     /* trust */
     .trust { background: #f7ecdf; }
@@ -103,7 +105,7 @@
     .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
     .step { background: #fff; border-radius: 14px; padding: 22px 24px; box-shadow: 0 10px 30px rgba(90,70,40,.08); display: flex; gap: 16px; align-items: flex-start; }
     .step .num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #b9884c; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-    .step h3 { font-size: 14.5px; margin-bottom: 4px; }
+    .step h3 { font-size: 14.5px; margin-bottom: 4px; text-transform: uppercase; letter-spacing: .04em; }
     .step p { font-size: 12.5px; color: #6b6357; }
     /* email back */
     .reply { text-align: center; }
@@ -155,8 +157,8 @@
           <p class="strength-label">Strength in one sentence</p>
           <h1><span class="hl-green">The builder you hire when you want to avoid expensive mistakes.</span></h1>
           <p class="lede">CA Construction Group should be the company homeowners trust with their major remodeling and backyard&#8209;home projects.</p>
-          <span class="pill">Build trust before asking for the quote</span>
-          <p class="body">People spending serious money on their home are not looking for the cheapest builder. They are looking for proof that the work will be done properly, that the project will pass inspection, and that their investment will be protected.</p>
+          <span class="pill" hidden>Build trust before asking for the quote</span>
+          <p class="body" hidden>People spending serious money on their home are not looking for the cheapest builder. They are looking for proof that the work will be done properly, that the project will pass inspection, and that their investment will be protected.</p>
           <p>
             <a class="btn btn-gold" href="#shift">The strategy &rarr;</a>
             <a class="btn btn-line" href="#diagnosis">See the diagnosis &darr;</a>
@@ -173,8 +175,8 @@
     </div>
   </section>
 
-  <!-- Stats -->
-  <div class="stats">
+  <!-- Stats (hidden on her order 2026-08-21) -->
+  <div class="stats" hidden>
     <div class="wrap">
       <div class="stats-grid">
         <div class="stat"><div class="n">$100K+</div><div class="l">is a major home investment</div></div>
@@ -185,8 +187,8 @@
     </div>
   </div>
 
-  <!-- Strengths -->
-  <section id="diagnosis">
+  <!-- Strengths (still here, hidden from the visitor on her order 2026-08-21) -->
+  <section id="diagnosis" hidden>
     <div class="wrap">
       <div class="split">
         <div>
@@ -237,7 +239,7 @@
       <h2><span class="hl-red">Current issue / gap in selling</span></h2>
       <p class="issue-quote"><span class="strike-red">&ldquo;We do quality work. We handle the process. Call&nbsp;us.&rdquo;</span></p>
       <p class="issue-body">That message is too vague because every builder says they do quality work. Right now, CA Construction Group sounds too much like every other builder and does not clearly show its competitive advantage.</p>
-      <div class="comp-table">
+      <div class="comp-table" hidden>
         <div class="comp-row"><span class="who">NEO Builders</span><span class="what">They sell speed: backyard homes built fast, with some projects claimed to take about six weeks.</span></div>
         <div class="comp-row"><span class="who">ADU Build LA</span><span class="what">They sell expertise with difficult homes, including hillsides, fire-risk areas, and city rules.</span></div>
         <div class="comp-row"><span class="who">Crystal Peak Construction</span><span class="what">They sell ground-up backyard homes and handling the whole project.</span></div>
@@ -262,7 +264,7 @@
   <!-- Message shift -->
   <section id="shift">
     <div class="wrap">
-      <p class="eyebrow">The message shift</p>
+      <p class="eyebrow eyebrow-green"><span class="hl-green">Problem</span></p>
       <h2>Move from generic construction ads to specific protection.</h2>
       <div class="shift-table">
         <div class="shift-head"><span>GENERIC ADS / COMPETITORS</span><span>SPECIFIC CA CONSTRUCTION ADS</span></div>
@@ -272,14 +274,14 @@
         <div class="shift-row"><span class="from">Showing photos of crews.</span><span class="to">Show how permits are handled.</span></div>
         <div class="shift-row"><span class="from">Showing photos of job sites.</span><span class="to">&ldquo;Before you spend $100,000 or more on your home, make sure the builder is doing the hidden work right&mdash;not just making it look good in photos.&rdquo;</span></div>
       </div>
-      <div class="big-quote">&ldquo;Building a backyard home is not just about putting up walls. We handle plans, permits, city inspections, and construction so you do not have to fight with the city or worry about mistakes.&rdquo;</div>
+      <div class="big-quote" hidden>&ldquo;Building a backyard home is not just about putting up walls. We handle plans, permits, city inspections, and construction so you do not have to fight with the city or worry about mistakes.&rdquo;</div>
     </div>
   </section>
 
   <!-- Next steps -->
   <section>
     <div class="wrap">
-      <p class="eyebrow">Next steps</p>
+      <p class="eyebrow eyebrow-green"><span class="hl-green">Next steps</span></p>
       <h2>Set up the system that turns attention into serious projects.</h2>
       <div class="steps">
         <div class="step"><span class="num">01</span><div><h3>Look at the current ads</h3><p>What is the messaging, who is seeing it, and are people clicking?</p></div></div>
