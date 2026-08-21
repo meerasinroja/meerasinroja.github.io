@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="color-scheme" content="only light" />
+  <title>CA Construction Group · Sales Diagnosis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #faf6ef; color: #221e18; font-family: 'DM Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
+    .wrap { max-width: 1020px; margin: 0 auto; padding: 0 22px; position: relative; }
+    .serif { font-family: 'Playfair Display', serif; }
+    .eyebrow { color: #b9884c; font-size: 12px; font-weight: 600; letter-spacing: .06em; margin-bottom: 14px; }
+    h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; color: #221e18; line-height: 1.12; }
+    h1 { font-size: clamp(38px, 6vw, 60px); }
+    h2 { font-size: clamp(28px, 4.4vw, 40px); }
+    section { padding: 72px 0; position: relative; }
+    .gold { color: #b9884c; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 999px; padding: 12px 22px; font-size: 14px; font-weight: 600; text-decoration: none; transition: opacity .2s; }
+    .btn:hover { opacity: .85; }
+    .btn-gold { background: #b9884c; color: #fff; }
+    .btn-line { border: 1px solid rgba(34,30,24,.25); color: #221e18; }
+    /* hero */
+    .hero { padding-top: 84px; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+    .hero p.lede { color: #4a443b; margin: 18px 0 14px; max-width: 460px; }
+    .pill { display: inline-block; background: #b9884c; color: #fff; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 6px 14px; margin: 6px 0 14px; }
+    .hero p.body { color: #5a5348; font-size: 14.5px; max-width: 470px; margin-bottom: 26px; }
+    .hero-visual { position: relative; }
+    .hero-card { background: #fff; border-radius: 18px; padding: 12px; box-shadow: 0 18px 50px rgba(90,70,40,.16); position: relative; z-index: 2; }
+    .hero-img { border-radius: 12px; height: 320px; background:
+      radial-gradient(140% 100% at 20% 0%, #e8d9c2 0%, rgba(0,0,0,0) 55%),
+      radial-gradient(120% 120% at 90% 100%, #b9884c33 0%, rgba(0,0,0,0) 60%),
+      linear-gradient(160deg, #f2e7d6 0%, #dbc4a2 55%, #c8a87c 100%); }
+    .focus-chip { position: absolute; top: 26px; right: -14px; background: #fff; border-radius: 12px; padding: 12px 16px; box-shadow: 0 10px 30px rgba(90,70,40,.18); z-index: 3; }
+    .focus-chip .k { font-size: 10px; letter-spacing: .12em; color: #b9884c; font-weight: 700; }
+    .focus-chip .v { font-size: 13px; font-weight: 700; color: #221e18; }
+    .hero-dot { position: absolute; bottom: -16px; left: -16px; width: 44px; height: 44px; border-radius: 50%; background: #b9884c; z-index: 3; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
+    .blob { position: absolute; border-radius: 50%; background: #ecd9bd; opacity: .55; z-index: 0; pointer-events: none; }
+    /* stats */
+    .stats { background: #fff; border-top: 1px solid rgba(34,30,24,.06); border-bottom: 1px solid rgba(34,30,24,.06); padding: 40px 0; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+    .stat .n { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: #8a6a3c; }
+    .stat .l { font-size: 11.5px; color: #6b6357; margin-top: 3px; }
+    /* generic split section */
+    .split { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: start; }
+    .muted { color: #5a5348; font-size: 14.5px; }
+    /* cards row */
+    .cards3 { display: grid; grid-template-columns: repeat(3, 1fr); background: #fff; border-radius: 16px; box-shadow: 0 14px 40px rgba(90,70,40,.10); margin-top: 40px; }
+    .cards3 > div { padding: 26px 22px; }
+    .cards3 > div + div { border-left: 1px solid rgba(34,30,24,.08); }
+    .icon-dot { width: 30px; height: 30px; border-radius: 8px; background: #f3e3cd; color: #b9884c; display: flex; align-items: center; justify-content: center; font-size: 14px; margin-bottom: 12px; }
+    .cards3 h3 { font-size: 14.5px; margin-bottom: 6px; }
+    .cards3 p { font-size: 13px; color: #6b6357; }
+    /* customer panel */
+    .panel { background: #fdf9f2; border-radius: 22px; box-shadow: 0 18px 50px rgba(90,70,40,.10); padding: 52px 56px; max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
+    .tanbg { background: #eddcc4; }
+    .quote-tan { background: #c29455; color: #fff; border-radius: 14px; padding: 26px 28px; margin-top: 26px; font-weight: 600; font-size: 14.5px; box-shadow: 6px 8px 0 rgba(90,70,40,.18); }
+    .quote-tan .qm { font-family: 'Playfair Display', serif; font-size: 26px; line-height: 0; display: block; margin-bottom: 12px; }
+    /* issue */
+    .center { text-align: center; }
+    .issue-quote { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.4vw, 30px); font-weight: 700; margin: 22px auto 14px; max-width: 560px; }
+    .issue-body { max-width: 520px; margin: 0 auto; font-size: 13.5px; color: #5a5348; }
+    .comp-table { background: #fff; border-radius: 14px; box-shadow: 0 14px 40px rgba(90,70,40,.10); max-width: 700px; margin: 40px auto 0; overflow: hidden; }
+    .comp-row { display: grid; grid-template-columns: 170px 1fr; gap: 14px; padding: 14px 20px; font-size: 12.5px; }
+    .comp-row + .comp-row { border-top: 1px solid rgba(34,30,24,.07); }
+    .comp-row .who { font-weight: 700; color: #221e18; }
+    .comp-row .what { color: #6b6357; }
+    /* dark sections */
+    .dark { background: #17130e; color: #f4ede1; }
+    .dark h2 { color: #f9f3e8; }
+    .dark .muted { color: rgba(244,237,225,.75); }
+    /* shift table */
+    .shift-table { background: #fff; border-radius: 14px; box-shadow: 0 14px 40px rgba(90,70,40,.10); overflow: hidden; margin-top: 36px; }
+    .shift-head { display: grid; grid-template-columns: 1fr 1.4fr; background: #f6ead7; padding: 12px 22px; font-size: 11px; font-weight: 700; letter-spacing: .08em; color: #8a6a3c; }
+    .shift-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 18px; padding: 15px 22px; font-size: 13px; }
+    .shift-row + .shift-row { border-top: 1px solid rgba(34,30,24,.07); }
+    .shift-row .from { color: #7d90a8; }
+    .shift-row .to { color: #221e18; font-weight: 500; }
+    .big-quote { background: #f6e7d2; border-radius: 14px; padding: 30px 34px; margin-top: 34px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(17px, 2.4vw, 21px); line-height: 1.5; color: #221e18; }
+    /* trust */
+    .trust { background: #f7ecdf; }
+    .trust-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 44px; align-items: center; }
+    .trust h2 { font-size: clamp(26px, 3.8vw, 36px); }
+    .vid-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .vid-cards > div { background: #fff; border-radius: 14px; padding: 20px; box-shadow: 0 10px 30px rgba(90,70,40,.08); }
+    .play { width: 26px; height: 26px; border-radius: 50%; border: 1.6px solid #b9884c; color: #b9884c; display: flex; align-items: center; justify-content: center; font-size: 10px; margin-bottom: 12px; }
+    .vid-cards h3 { font-size: 13.5px; margin-bottom: 5px; }
+    .vid-cards p { font-size: 12px; color: #6b6357; }
+    /* next steps */
+    .steps { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+    .step { background: #fff; border-radius: 14px; padding: 22px 24px; box-shadow: 0 10px 30px rgba(90,70,40,.08); display: flex; gap: 16px; align-items: flex-start; }
+    .step .num { flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%; background: #b9884c; color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    .step h3 { font-size: 14.5px; margin-bottom: 4px; }
+    .step p { font-size: 12.5px; color: #6b6357; }
+    /* email back */
+    .reply { text-align: center; }
+    .reply .box { background: #fff; border-radius: 20px; box-shadow: 0 18px 50px rgba(90,70,40,.10); padding: 48px 30px; max-width: 640px; margin: 0 auto; }
+    .reply p.sub { color: #5a5348; font-size: 14.5px; margin: 12px auto 24px; max-width: 420px; }
+    footer { text-align: center; padding: 34px 0 44px; font-size: 11px; color: #9a9184; }
+    @media (max-width: 760px) {
+      section { padding: 52px 0; }
+      .hero-grid, .split, .trust-grid { grid-template-columns: 1fr; gap: 30px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .cards3 { grid-template-columns: 1fr; }
+      .cards3 > div + div { border-left: 0; border-top: 1px solid rgba(34,30,24,.08); }
+      .steps { grid-template-columns: 1fr; }
+      .vid-cards { grid-template-columns: 1fr; }
+      .panel { padding: 34px 26px; }
+      .comp-row { grid-template-columns: 1fr; gap: 4px; }
+      .shift-head, .shift-row { grid-template-columns: 1fr; }
+      .shift-head span + span { display: none; }
+      .shift-row .from::before { content: "Now: "; font-weight: 700; }
+      .shift-row .to::before { content: "Instead: "; font-weight: 700; color: #b9884c; }
+      .focus-chip { right: 8px; }
+    }
+  </style>
+  <script>window.MS_SLUG = "ca-construction";</script>
+  <script src="/ms-analytics.js" defer></script>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="blob" style="width:340px;height:340px;top:-60px;right:-120px;"></div>
+    <div class="blob" style="width:160px;height:160px;top:150px;right:150px;opacity:.4;"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">CA Construction Group · Sales Diagnosis</p>
+          <h1>The builder you hire when mistakes are too expensive.</h1>
+          <p class="lede">CA Construction Group should be the company homeowners trust with their major remodeling and backyard&#8209;home projects.</p>
+          <span class="pill">Build trust before asking for the quote</span>
+          <p class="body">People spending serious money on their home are not looking for the cheapest builder. They are looking for proof that the work will be done properly, that the project will pass inspection, and that their investment will be protected.</p>
+          <p>
+            <a class="btn btn-gold" href="#shift">The strategy &rarr;</a>
+            <a class="btn btn-line" href="#diagnosis">See the diagnosis &darr;</a>
+          </p>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-img"></div>
+            <div class="focus-chip"><span class="k">FOCUS</span><br /><span class="v">Protect the investment</span></div>
+            <div class="hero-dot">&#8862;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat"><div class="n">$100K+</div><div class="l">Major home investment</div></div>
+        <div class="stat"><div class="n">$500K</div><div class="l">High-value project decision</div></div>
+        <div class="stat"><div class="n">6 weeks</div><div class="l">Speed promise from a competitor</div></div>
+        <div class="stat"><div class="n">4</div><div class="l">Clear competitor positions</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strengths -->
+  <section id="diagnosis">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="eyebrow">What CA Construction already has</p>
+          <h2>The strengths are real. The message needs to make them obvious.</h2>
+        </div>
+        <p class="muted" style="padding-top:38px;">CA Construction Group says it handles projects from plans and city permits through construction and the final inspection. It also says it prioritizes the important work behind the walls&mdash;foundation, plumbing, electrical, and other structural work&mdash;before cosmetic finishes.</p>
+      </div>
+      <div class="cards3">
+        <div>
+          <div class="icon-dot">&#127968;</div>
+          <h3>One team</h3>
+          <p>Plans, permits, construction, and final inspection handled in one place.</p>
+        </div>
+        <div>
+          <div class="icon-dot">&#128737;</div>
+          <h3>The work people cannot see</h3>
+          <p>Foundation, plumbing, electrical, and other important work are addressed before finishes.</p>
+        </div>
+        <div>
+          <div class="icon-dot">&#10004;</div>
+          <h3>A safer major investment</h3>
+          <p>The right message is not just quality. It is fewer surprises, proper work, and a project built to last.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Target customer -->
+  <section class="tanbg">
+    <div class="blob" style="width:260px;height:260px;top:40px;left:-140px;background:#fff;opacity:.25;"></div>
+    <div class="wrap">
+      <div class="panel">
+        <p class="eyebrow">Target customer</p>
+        <h2>Who the customer really is.</h2>
+        <p class="muted" style="margin-top:14px;">The target customer is a homeowner with money who needs a major job done right. They want more space, a better home, a place for parents or adult children to live, or a backyard home they can rent out.</p>
+        <div class="quote-tan">
+          <span class="qm">&ldquo;</span>
+          They worry about getting ripped off. They fear bad work, failed city inspections, delays, surprise costs, and a builder who disappears after taking payment.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Current issue -->
+  <section class="center">
+    <div class="wrap">
+      <h2>Current issue / gap in selling</h2>
+      <p class="issue-quote">&ldquo;We do quality work. We handle the process. Call&nbsp;us.&rdquo;</p>
+      <p class="issue-body">That message is too vague because every builder says they do quality work. Right now, CA Construction Group sounds too much like every other builder and does not clearly show its competitive advantage.</p>
+      <div class="comp-table">
+        <div class="comp-row"><span class="who">NEO Builders</span><span class="what">They sell speed: backyard homes built fast, with some projects claimed to take about six weeks.</span></div>
+        <div class="comp-row"><span class="who">ADU Build LA</span><span class="what">They sell expertise with difficult homes, including hillsides, fire-risk areas, and city rules.</span></div>
+        <div class="comp-row"><span class="who">Crystal Peak Construction</span><span class="what">They sell ground-up backyard homes and handling the whole project.</span></div>
+        <div class="comp-row"><span class="who">Martins Construction</span><span class="what">They sell general home remodeling: kitchens, bathrooms, and extra rooms.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ad diagnosis (dark) -->
+  <section class="dark">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <p class="eyebrow">Ad diagnosis</p>
+          <h2>Why the ads likely have not worked.</h2>
+        </div>
+        <p class="muted" style="padding-top:38px;">The ads and content may sound generic instead of focusing on what makes CA Construction different. An ad that says, &ldquo;Need a backyard home? Get a free quote,&rdquo; attracts people looking for the cheapest price. Those people compare several builders and choose the lowest bid.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message shift -->
+  <section id="shift">
+    <div class="wrap">
+      <p class="eyebrow">The message shift</p>
+      <h2>Move from generic construction ads to specific protection.</h2>
+      <div class="shift-table">
+        <div class="shift-head"><span>GENERIC ADS / COMPETITORS</span><span>SPECIFIC CA CONSTRUCTION ADS</span></div>
+        <div class="shift-row"><span class="from">Competitors sell speed or hillside experience.</span><span class="to">CA Construction should sell being the builder who handles permits, helps the home pass inspection, does the important work properly, and protects a major investment.</span></div>
+        <div class="shift-row"><span class="from">&ldquo;Get a free quote.&rdquo;</span><span class="to">&ldquo;We are the safest and best choice. You do not have to worry about getting scammed, failing inspections, surprise costs, or bad work inside the walls.&rdquo;</span></div>
+        <div class="shift-row"><span class="from">Showing construction work.</span><span class="to">Show long-term savings on high-investment projects and builds that last for decades.</span></div>
+        <div class="shift-row"><span class="from">Showing photos of crews.</span><span class="to">Show how permits are handled.</span></div>
+        <div class="shift-row"><span class="from">Showing photos of job sites.</span><span class="to">&ldquo;Before you spend $100,000 or more on your home, make sure the builder is doing the hidden work right&mdash;not just making it look good in photos.&rdquo;</span></div>
+      </div>
+      <div class="big-quote">&ldquo;Building a backyard home is not just about putting up walls. We handle plans, permits, city inspections, and construction so you do not have to fight with the city or worry about mistakes.&rdquo;</div>
+    </div>
+  </section>
+
+  <!-- Content that builds trust -->
+  <section class="trust">
+    <div class="wrap">
+      <div class="trust-grid">
+        <div>
+          <p class="eyebrow">Content that builds trust</p>
+          <h2>&ldquo;We are the company you hire when you cannot afford mistakes.&rdquo;</h2>
+        </div>
+        <div class="vid-cards">
+          <div><div class="play">&#9654;</div><h3>Mid-build video tours</h3><p>Show the important work while it is being done.</p></div>
+          <div><div class="play">&#9654;</div><h3>Generic company vs. CA Construction</h3><p>Show the difference between a generic builder and a company that protects an expensive project.</p></div>
+          <div><div class="play">&#9654;</div><h3>Reviews and FAQs</h3><p>Show real questions, proof, and customer concerns.</p></div>
+          <div><div class="play">&#9654;</div><h3>Price-point difference</h3><p>Explain why doing the work properly protects the investment over the long term.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Next steps -->
+  <section>
+    <div class="wrap">
+      <p class="eyebrow">Next steps</p>
+      <h2>Set up the system that turns attention into serious projects.</h2>
+      <div class="steps">
+        <div class="step"><span class="num">01</span><div><h3>Look at the current ads</h3><p>What is the messaging, who is seeing it, and are people clicking?</p></div></div>
+        <div class="step"><span class="num">02</span><div><h3>Track every real lead</h3><p>Who called, who became a paying customer, and what message did they see before they contacted the company?</p></div></div>
+        <div class="step"><span class="num">03</span><div><h3>Retarget interested people online</h3><p>Someone who watches a video or visits the site but does not call should see more proof later: before-and-after job photos, customer stories, and full transformation slides.</p></div></div>
+        <div class="step"><span class="num">04</span><div><h3>Fix the conversion system</h3><p>People do not make a $500,000 decision overnight. They need to be carefully guided until they are ready to choose a builder.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email back -->
+  <section class="reply">
+    <div class="wrap">
+      <div class="box">
+        <p class="eyebrow">Ready when you are</p>
+        <h2>Want to talk this through?</h2>
+        <p class="sub">Email me back and I will walk you through the strategy and what the first month looks like.</p>
+        <a class="btn btn-gold" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social%20%E2%80%94%20Sales%20Diagnosis">Email Meera back</a>
+        <p style="margin-top:14px;font-size:13px;color:#6b6357;">meera@meerasocial.com &middot; (323) 747-4097</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>CA Construction Group &middot; Sales Diagnosis &middot; Prepared by Meera Social</footer>
+
+</body>
+</html>
