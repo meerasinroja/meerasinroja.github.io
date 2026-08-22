@@ -322,7 +322,9 @@
             var PHONE = "+13237474097", SHOWN = "(323) 747-4097", EMAIL = "meera@meerasocial.com";
             var SUBJECT = "CA Construction x Meera Social — Marketing Diagnosis";
             var SMS_BODY = "Hi Meera, this is CA Construction about the marketing diagnosis.";
-            var desktop = !(("ontouchstart" in window) || (navigator.maxTouchPoints > 0));
+            // Touch-screen laptops (hers) report touch points, so "has touch" is NOT "is a phone".
+            // Only a real phone/tablet browser gets the native tel:/sms:/mailto: handoff.
+            var desktop = !/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
             var reach = document.getElementById("reach"), reachText = document.getElementById("reachText"), reachCopy = document.getElementById("reachCopy");
             var copyVal = "";
             function show(text, val) { reachText.textContent = text; copyVal = val; reach.hidden = false; reach.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
