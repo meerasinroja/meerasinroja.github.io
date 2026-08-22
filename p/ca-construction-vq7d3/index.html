@@ -329,9 +329,7 @@
             var copyVal = "";
             function show(text, val) { reachText.textContent = text; copyVal = val; reach.hidden = false; reach.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
             reachCopy.addEventListener("click", function () { try { navigator.clipboard.writeText(copyVal); reachCopy.textContent = "Copied"; setTimeout(function () { reachCopy.textContent = "Copy"; }, 1500); } catch (e) {} });
-            function gmail() { return "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(EMAIL) + "&su=" + encodeURIComponent(SUBJECT) + "&body=" + encodeURIComponent("Hi Meera,
-
-"); }
+            function gmail() { return "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(EMAIL) + "&su=" + encodeURIComponent(SUBJECT) + "&body=" + encodeURIComponent("Hi Meera,\n\n"); }
             var links = document.querySelectorAll(".contact-row a");
             links.forEach(function (a) {
               a.addEventListener("click", function (ev) {
