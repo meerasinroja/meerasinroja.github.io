@@ -130,6 +130,9 @@
     .reply-form button:disabled { opacity: .6; cursor: default; }
     .contact-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .contact-row .btn { font-size: 17px; font-weight: 700; padding: 15px 26px; min-width: 170px; justify-content: center; background: #cfe9d3; color: #1a1a1a; border: 3px solid #1a1a1a; } /* pastel green, her order */
+    .reach { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; background: #cfe9d3; border: 3px solid #1a1a1a; border-radius: 16px; padding: 14px 18px; }
+    .reach-big { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: #1a1a1a; }
+    .reach .btn { background: #1a1a1a; color: #fff; border: 0; }
     .reply-status { text-align: center; font-size: 13.5px; font-weight: 600; min-height: 1.2em; }
     .reply-status.ok { color: #227d3e; }
     .reply-status.err { color: #af1a1a; }
@@ -306,7 +309,39 @@
           <a class="btn btn-gold" href="sms:+13237474097?&body=Hi%20Meera%2C%20this%20is%20CA%20Construction%20about%20the%20marketing%20diagnosis.">&#128172; Text</a>
           <a class="btn btn-gold" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social%20%E2%80%94%20Marketing%20Diagnosis&body=Hi%20Meera%2C%0A%0A">&#9993; Email</a>
         </div>
+        <div class="reach" id="reach" hidden>
+          <p class="reach-big" id="reachText"></p>
+          <button type="button" class="btn btn-gold" id="reachCopy">Copy</button>
+        </div>
         <p style="margin-top:18px;font-size:14px;color:#6b6357;font-weight:600;">(323) 747-4097 &middot; meera@meerasocial.com</p>
+        <script>
+          // On a PHONE the three buttons open the dialer / messages / mail app directly. On a
+          // LAPTOP those app links often open nothing, so: Email opens a ready-to-send Gmail
+          // compose in a new tab, and Call / Text show the number big with one-tap copy.
+          (function () {
+            var PHONE = "+13237474097", SHOWN = "(323) 747-4097", EMAIL = "meera@meerasocial.com";
+            var SUBJECT = "CA Construction x Meera Social — Marketing Diagnosis";
+            var SMS_BODY = "Hi Meera, this is CA Construction about the marketing diagnosis.";
+            var desktop = !(("ontouchstart" in window) || (navigator.maxTouchPoints > 0));
+            var reach = document.getElementById("reach"), reachText = document.getElementById("reachText"), reachCopy = document.getElementById("reachCopy");
+            var copyVal = "";
+            function show(text, val) { reachText.textContent = text; copyVal = val; reach.hidden = false; reach.scrollIntoView({ block: "nearest", behavior: "smooth" }); }
+            reachCopy.addEventListener("click", function () { try { navigator.clipboard.writeText(copyVal); reachCopy.textContent = "Copied"; setTimeout(function () { reachCopy.textContent = "Copy"; }, 1500); } catch (e) {} });
+            function gmail() { return "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(EMAIL) + "&su=" + encodeURIComponent(SUBJECT) + "&body=" + encodeURIComponent("Hi Meera,
+
+"); }
+            var links = document.querySelectorAll(".contact-row a");
+            links.forEach(function (a) {
+              a.addEventListener("click", function (ev) {
+                if (!desktop) return; // phone: let the native link do its job
+                var h = a.getAttribute("href") || "";
+                if (h.indexOf("mailto:") === 0) { ev.preventDefault(); window.open(gmail(), "_blank"); }
+                else if (h.indexOf("tel:") === 0) { ev.preventDefault(); show("Call " + SHOWN, PHONE); }
+                else if (h.indexOf("sms:") === 0) { ev.preventDefault(); show("Text " + SHOWN, PHONE); }
+              });
+            });
+          })();
+        </script>
       </div>
     </div>
   </section>
