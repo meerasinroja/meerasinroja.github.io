@@ -298,7 +298,7 @@
   </section>
 
   <!-- Email back -->
-  <section class="reply">
+  <section class="reply" id="contact">
     <div class="wrap">
       <div class="box">
         <p class="eyebrow">Ready when you are</p>
@@ -345,6 +345,65 @@
       </div>
     </div>
   </section>
+
+  <!-- PROTOTYPE (her order 2026-08-22): VSL-style conversion block, HER EYES ONLY. Shows only on a
+       browser marked as hers (opened via the CRM "Open the page" button, or ?me=1 / ?heat=1); the
+       brand never sees it. Its buttons jump to the CALL/TEXT/EMAIL row. -->
+  <section class="proto" id="proto" hidden style="padding:0 16px 48px">
+<section> at the very BOTTOM of your    -->
+<!-- existing CA Construction page. Nothing above it needs to change.  -->
+<!-- Self-contained: inline styles + inline SVG icons, no dependencies. -->
+<!-- ================================================================= -->
+<section style="font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;max-width:680px;margin:0 auto;color:#1a1a1a">
+
+  <div style="border-top:2px dashed #d8cabf;margin:8px 0 22px"></div>
+
+  <div style="background:#191817;border-radius:16px;padding:32px 24px;text-align:center;color:#f3ede3">
+    <div style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#d9a24e;font-weight:600;margin-bottom:14px">Your next step</div>
+    <div style="font-size:30px;line-height:1.22;font-weight:700;max-width:520px;margin:0 auto 14px">See the full plan, live, in 30 minutes.</div>
+    <div style="font-size:16px;line-height:1.6;color:#c3bcb0;max-width:460px;margin:0 auto 22px">I will walk you through the diagnosis above and the first 30 days on a quick call. No pitch. If it is not a fit, the plan is yours to keep.</div>
+    <div style="position:relative;max-width:460px;margin:0 auto 22px;aspect-ratio:16/9;background:#0f0e0d;border:1px solid #34302b;border-radius:12px;display:flex;align-items:center;justify-content:center">
+      <div style="width:60px;height:60px;border-radius:50%;background:#d9a24e;display:flex;align-items:center;justify-content:center">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="#191817" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <span style="position:absolute;bottom:10px;right:12px;font-size:12px;color:#7d766b">Your 3-minute walkthrough</span>
+    </div>
+    <a href="#contact" style="display:inline-block;background:#d9a24e;color:#191817;text-decoration:none;font-weight:700;font-size:17px;padding:15px 30px;border-radius:10px">Book your strategy call</a>
+    <div style="font-size:13px;color:#8f887c;margin-top:12px">30 minutes &middot; a few slots open this week</div>
+  </div>
+
+  <div style="background:#f2f6ea;border:1px solid #cfe0b6;border-radius:12px;padding:20px;margin:18px 0">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#227d3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none" aria-hidden="true"><path d="M5 12l5 5L20 6"/></svg>
+        <span style="font-size:15px;color:#39332b;line-height:1.55">Own "the safe bet" so homeowners stop comparing you on price.</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#227d3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none" aria-hidden="true"><path d="M5 12l5 5L20 6"/></svg>
+        <span style="font-size:15px;color:#39332b;line-height:1.55">Build trust before the quote, the way $100k to $500k buyers need it.</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:flex-start">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#227d3e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="margin-top:2px;flex:none" aria-hidden="true"><path d="M5 12l5 5L20 6"/></svg>
+        <span style="font-size:15px;color:#39332b;line-height:1.55">A first 30 days you can see, not a vague retainer.</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#faf5ef;border:1px solid #e6dccf;border-radius:16px;padding:26px 22px;text-align:center">
+    <div style="font-size:22px;font-weight:700;margin-bottom:16px">Ready to be the obvious choice?</div>
+    <a href="#contact" style="display:inline-block;background:#b5761a;color:#fff;text-decoration:none;font-weight:700;font-size:17px;padding:15px 32px;border-radius:10px">Book your strategy call</a>
+    <div style="font-size:14px;color:#7d766b;margin-top:14px">Prefer to write first? <a href="mailto:meera@meerasocial.com" style="color:#b5761a;text-decoration:none;font-weight:700">meera@meerasocial.com</a></div>
+  </div>
+
+</section>
+  </section>
+  <script>
+    (function () {
+      var p = new URLSearchParams(location.search), mine = false;
+      try { mine = localStorage.getItem("ms_owner") === "1" || p.get("me") === "1" || p.get("heat") === "1"; } catch (e) {}
+      if (mine) document.getElementById("proto").hidden = false;
+    })();
+  </script>
 
   <footer>CA Construction Group &middot; Marketing Diagnosis &middot; Prepared by Meera Social</footer>
 
