@@ -721,8 +721,16 @@
   .v3-bar button { font: inherit; font-weight: 800; border: 0; border-radius: 999px; padding: 8px 14px; background: #cfe9d3; color: #1a1a1a; cursor: pointer; }
   .v3-bar button.off { background: #3a3a3a; color: #fff; }
   .v3-bar .st { margin-left: auto; font-weight: 600; color: #cfe9d3; }
+  .v3-on [data-v3] { position: relative; }
   .v3-on [data-v3]:hover { outline: 2px dashed rgba(34,125,62,.7); outline-offset: 2px; cursor: pointer; }
   .v3-sel { outline: 3px solid #227d3e !important; outline-offset: 2px; }
+  .v3-editing { outline: 3px solid #b9884c !important; }
+  /* the X on EVERY element while editing — removes that element and everything inside it */
+  .v3-x { position: absolute; top: -9px; right: -9px; width: 20px; height: 20px; border-radius: 50%; background: #af1a1a; color: #fff; font: 800 13px/20px 'DM Sans', sans-serif; text-align: center; cursor: pointer; z-index: 20; box-shadow: 0 2px 6px rgba(0,0,0,.35); user-select: none; }
+  .v3-x:hover { transform: scale(1.2); }
+  .v3-drag-ghost { position: fixed; pointer-events: none; z-index: 100001; opacity: .75; outline: 3px solid #227d3e; background: #fff; border-radius: 8px; max-width: 60vw; overflow: hidden; }
+  .v3-drop { box-shadow: 0 -6px 0 0 #227d3e !important; }
+  .v3-drop-after { box-shadow: 0 6px 0 0 #227d3e !important; }
   /* Vertical panel pinned to the RIGHT edge (her order) — the page stays visible beside it */
   .v3-panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(340px, 86vw); z-index: 100000; background: #1a1a1a; color: #fff; border-radius: 18px 0 0 18px; padding: 14px 14px 24px; overflow-y: auto; box-shadow: -10px 0 40px rgba(0,0,0,.45); font-family: 'DM Sans', sans-serif; }
   .v3-panel[hidden] { display: none !important; }
@@ -737,15 +745,17 @@
   .v3-panel .val { color: #fff; font-weight: 800; text-transform: none; letter-spacing: 0; }
   .v3-panel button { font: inherit; font-weight: 800; border: 0; border-radius: 999px; padding: 8px 14px; background: #cfe9d3; color: #1a1a1a; cursor: pointer; }
   .v3-panel button.ghost { background: #3a3a3a; color: #fff; }
-  .v3-panel .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .v3-editing { outline: 3px solid #b9884c !important; }
+  .v3-panel button.danger { background: #af1a1a; color: #fff; }
+  .v3-panel .row { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+  .v3-panel .hint { font-size: 12px; color: #bfb8ab; margin-top: 6px; }
 </style>
 
 <script>
-  // ── V3 EDITOR: tap any element in Version 3 and change it — font size, weight, colour,
-  // background, corners, padding, spacing, alignment, caps, borders, width, even the text.
-  // Every change saves to BrandHub (per page, per device-independent), so phone and laptop
-  // show the same edited V3. Nothing here ever runs for the brand: V3 is owner-only.
+  // ── V3 EDITOR: tap any element in Version 3 and change it — size, weight, colour, background,
+  // corners, padding, spacing, alignment, caps, borders, width, opacity, the words. Move it up or
+  // down (buttons) or DRAG it above / below its neighbours. Every element carries an X that
+  // removes it, and emptying an element's words removes it too. Saved to BrandHub, so the same
+  // V3 shows on every device of hers. The brand never sees V3 at all.
   (function () {
     var API = "https://brandhub-pro-claude-production.up.railway.app";
     var SLUG = window.MS_SLUG || "page";
@@ -754,11 +764,15 @@
     var area = root.querySelector(".v3");
     var on = false, sel = null, edits = {}, saveT = null, status;
 
-    // Stable key per element = its position path inside the V3 root.
-    function keyOf(el) { var p = []; while (el && el !== area) { var i = 0, s = el; while ((s = s.previousElementSibling)) i++; p.unshift(i); el = el.parentElement; } return p.join("/"); }
-    function byKey(k) { var el = area; k.split("/").forEach(function (i) { el = el && el.children[Number(i)]; }); return el; }
-    var ALL = area.querySelectorAll("*");
-    for (var i = 0; i < ALL.length; i++) { var tg = ALL[i].tagName; if (/^(SCRIPT|STYLE|SVG|PATH|BR)$/.test(tg)) continue; ALL[i].setAttribute("data-v3", keyOf(ALL[i])); }
+    // Stable id per element: numbered in document order on the PRISTINE markup (same every load),
+    // then moves/deletes replay on top — so ids never drift when things are reordered or removed.
+    var n = 0;
+    area.querySelectorAll("*").forEach(function (el) { if (/^(SCRIPT|STYLE|SVG|PATH|BR)$/.test(el.tagName)) return; el.setAttribute("data-v3", String(n++)); });
+    function byKey(k) { return area.querySelector('[data-v3="' + k + '"]'); }
+    function parentKey(el) { var p = el.parentElement; return p === area ? "root" : p.getAttribute("data-v3"); }
+    function parentByKey(k) { return k === "root" ? area : byKey(k); }
+    function kidsOf(p) { return Array.prototype.filter.call(p.children, function (c) { return !c.classList.contains("v3-x"); }); }
+    function indexIn(el) { return kidsOf(el.parentElement).indexOf(el); }
 
     var PROPS = [
       ["fontSize", "Font size", "range", 8, 96, "px"], ["fontWeight", "Weight", "select", ["400", "600", "700", "800", "900"]],
@@ -771,10 +785,14 @@
       ["width", "Width %", "range", 10, 100, "%"], ["opacity", "Opacity", "range", 0.1, 1, ""],
     ];
 
-    function apply(el, k, st) { for (var p in st) { el.style[p] = st[p]; if (p === "borderWidth") el.style.borderStyle = "solid"; } }
-    function applyAll() { for (var k in edits) { var el = byKey(k); if (!el) continue; if (edits[k].styles) apply(el, k, edits[k].styles); if (typeof edits[k].html === "string") el.innerHTML = edits[k].html; } }
+    function applyStyles(el, st) { for (var p in st) { el.style[p] = st[p]; if (p === "borderWidth") el.style.borderStyle = "solid"; } }
+    function applyAll() {
+      for (var k in edits) { if (k === "__moves") continue; var el = byKey(k); if (!el) continue; if (edits[k].styles) applyStyles(el, edits[k].styles); if (typeof edits[k].html === "string") el.innerHTML = edits[k].html; }
+      (edits.__moves || []).forEach(function (m) { var el = byKey(m.id), p = parentByKey(m.parent); if (!el || !p) return; var kids = kidsOf(p).filter(function (c) { return c !== el; }); p.insertBefore(el, kids[m.index] || null); });
+      for (var k2 in edits) { if (edits[k2] && edits[k2].deleted) { var d = byKey(k2); if (d) d.remove(); } }
+    }
 
-    // ── persistence (BrandHub app_kv, owner-gated by network) ──
+    // ── persistence ──
     function load() {
       return fetch(API + "/api/page-design?slug=" + encodeURIComponent(SLUG) + "&v=v3", { cache: "no-store" }).then(function (r) { return r.json(); })
         .then(function (j) { edits = (j && j.edits) || {}; applyAll(); }).catch(function () {});
@@ -788,43 +806,61 @@
           .catch(function () { status.textContent = "Not saved (offline)"; });
       }, 500);
     }
+    function entry(k) { edits[k] = edits[k] || {}; return edits[k]; }
 
-    // ── toolbar ──
+    // ── remove / move ──
+    function removeEl(el) { var k = el.getAttribute("data-v3"); if (sel === el) select(null); entry(k).deleted = true; el.remove(); save(); }
+    function recordMove(el) { edits.__moves = edits.__moves || []; edits.__moves.push({ id: el.getAttribute("data-v3"), parent: parentKey(el), index: indexIn(el) }); save(); }
+    function moveBy(el, dir) {
+      var kids = kidsOf(el.parentElement), i = kids.indexOf(el), j = i + dir;
+      if (j < 0 || j >= kids.length) return;
+      if (dir < 0) el.parentElement.insertBefore(el, kids[j]); else el.parentElement.insertBefore(el, kids[j].nextSibling);
+      recordMove(el); el.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+
+    // ── X badges on every element while editing ──
+    function badgesOn() { area.querySelectorAll("[data-v3]").forEach(function (el) { if (el.querySelector(":scope > .v3-x")) return; var x = document.createElement("b"); x.className = "v3-x"; x.textContent = "×"; x.title = "Remove this"; x.addEventListener("click", function (ev) { ev.stopPropagation(); ev.preventDefault(); removeEl(el); }); el.appendChild(x); }); }
+    function badgesOff() { area.querySelectorAll(".v3-x").forEach(function (x) { x.remove(); }); }
+
+    // ── toolbar (outside the keyed tree) ──
     var bar = document.createElement("div"); bar.className = "v3-bar";
     bar.innerHTML = '<span>VERSION 3 · EDITABLE</span><button id="v3toggle" class="off">Edit: off</button><button id="v3reset" class="off">Reset all</button><span class="st" id="v3status">Loaded</span>';
-    area.parentElement.insertBefore(bar, area); // outside the keyed tree — inserting inside shifted every saved key by one
+    area.parentElement.insertBefore(bar, area);
     status = bar.querySelector("#v3status");
-    bar.querySelector("#v3toggle").addEventListener("click", function () { on = !on; this.textContent = "Edit: " + (on ? "ON — tap anything" : "off"); this.className = on ? "" : "off"; root.classList.toggle("v3-on", on); if (!on) select(null); });
-    bar.querySelector("#v3reset").addEventListener("click", function () { if (!confirm("Reset Version 3 back to the Version 2 look? Your edits are removed.")) return; edits = {}; save(); location.reload(); });
+    bar.querySelector("#v3toggle").addEventListener("click", function () { on = !on; this.textContent = "Edit: " + (on ? "ON — tap · drag · ×" : "off"); this.className = on ? "" : "off"; root.classList.toggle("v3-on", on); if (on) badgesOn(); else { badgesOff(); select(null); } });
+    bar.querySelector("#v3reset").addEventListener("click", function () { if (!confirm("Reset Version 3 back to the Version 2 look? Every edit, move and removal is undone.")) return; edits = {}; save(); setTimeout(function () { location.reload(); }, 700); });
 
     // ── panel ──
     var panel = document.createElement("div"); panel.className = "v3-panel"; panel.hidden = true;
     document.body.appendChild(panel);
     function select(el) {
-      if (sel) { sel.classList.remove("v3-sel"); if (sel.isContentEditable) { commitText(sel); } }
+      if (sel) { sel.classList.remove("v3-sel"); if (sel.isContentEditable) commitText(sel); }
       sel = el;
       if (!el) { panel.hidden = true; return; }
       el.classList.add("v3-sel");
       var k = el.getAttribute("data-v3"), cs = getComputedStyle(el), cur = (edits[k] && edits[k].styles) || {};
-      var h = '<div class="hd"><span class="tag">' + el.tagName.toLowerCase() + '</span><span>' + (el.innerText || "").trim().slice(0, 40) + '</span><button class="ghost" id="v3close">Done</button></div><div class="grid">';
+      var h = '<div class="hd"><span class="tag">' + el.tagName.toLowerCase() + '</span><span>' + (el.innerText || "").replace(/×/g, "").trim().slice(0, 40) + '</span><button class="ghost" id="v3close">Done</button></div>';
+      h += '<div class="row"><button id="v3up">▲ Move up</button><button id="v3down">▼ Move down</button><button class="danger" id="v3del">× Remove</button></div><p class="hint">Or press and hold the element, then drag it above or below its neighbours.</p><div class="grid">';
       PROPS.forEach(function (p) {
         var name = p[0], label = p[1], type = p[2], v = cur[name] || "";
         if (type === "range") {
-          var num = parseFloat(v || cs[name]) ; if (name === "width") num = v ? parseFloat(v) : 100; if (isNaN(num)) num = p[3];
+          var num = parseFloat(v || cs[name]); if (name === "width") num = v ? parseFloat(v) : 100; if (isNaN(num)) num = p[3];
           h += '<label>' + label + ' <span class="val" id="val-' + name + '">' + (Math.round(num * 100) / 100) + p[5] + '</span><input type="range" data-p="' + name + '" data-unit="' + p[5] + '" min="' + p[3] + '" max="' + p[4] + '" step="' + (p[4] - p[3] > 20 ? 1 : 0.05) + '" value="' + num + '"></label>';
         } else if (type === "color") {
-          var c = toHex(v || cs[name]);
-          h += '<label>' + label + '<input type="color" data-p="' + name + '" value="' + c + '"></label>';
+          h += '<label>' + label + '<input type="color" data-p="' + name + '" value="' + toHex(v || cs[name]) + '"></label>';
         } else {
           h += '<label>' + label + '<select data-p="' + name + '">' + p[3].map(function (o) { return '<option' + ((v || cs[name]) === o ? " selected" : "") + '>' + o + '</option>'; }).join("") + '</select></label>';
         }
       });
-      h += '</div><div class="row"><button id="v3text">Edit the words</button><button class="ghost" id="v3clear">Reset this one</button><button class="ghost" id="v3nobg">No background</button></div>';
+      h += '</div><div class="row"><button id="v3text">Edit the words</button><button class="ghost" id="v3clear">Reset this one</button><button class="ghost" id="v3nobg">No background</button></div><p class="hint">Delete all the words of an element and the element disappears with them.</p>';
       panel.innerHTML = h; panel.hidden = false;
       panel.querySelector("#v3close").onclick = function () { select(null); };
-      panel.querySelector("#v3clear").onclick = function () { delete edits[k]; el.removeAttribute("style"); save(); select(el); };
+      panel.querySelector("#v3up").onclick = function () { moveBy(el, -1); };
+      panel.querySelector("#v3down").onclick = function () { moveBy(el, 1); };
+      panel.querySelector("#v3del").onclick = function () { removeEl(el); };
+      panel.querySelector("#v3clear").onclick = function () { var keep = edits[k] && edits[k].deleted; delete edits[k]; el.removeAttribute("style"); if (keep) entry(k).deleted = true; save(); select(el); };
       panel.querySelector("#v3nobg").onclick = function () { set(k, el, "backgroundColor", "transparent"); };
-      panel.querySelector("#v3text").onclick = function () { el.contentEditable = "true"; el.classList.add("v3-editing"); el.focus(); this.textContent = "Editing… tap Done when finished"; };
+      panel.querySelector("#v3text").onclick = function () { var x = el.querySelector(":scope > .v3-x"); if (x) x.remove(); el.contentEditable = "true"; el.classList.add("v3-editing"); el.focus(); this.textContent = "Editing… tap Done when finished"; };
       panel.querySelectorAll("[data-p]").forEach(function (inp) {
         inp.addEventListener("input", function () {
           var name = inp.getAttribute("data-p"), unit = inp.getAttribute("data-unit") || "", val = inp.value + unit;
@@ -834,18 +870,59 @@
         });
       });
     }
-    function set(k, el, name, val) { edits[k] = edits[k] || {}; edits[k].styles = edits[k].styles || {}; edits[k].styles[name] = val; apply(el, k, edits[k].styles); save(); }
-    function commitText(el) { el.contentEditable = "false"; el.classList.remove("v3-editing"); var k = el.getAttribute("data-v3"); edits[k] = edits[k] || {}; edits[k].html = el.innerHTML; save(); }
-    function toHex(c) { var m = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(c || ""); if (!m) return /^#/.test(c || "") ? c : "#000000"; return "#" + [m[1], m[2], m[3]].map(function (n) { return ("0" + Number(n).toString(16)).slice(-2); }).join(""); }
+    function set(k, el, name, val) { var e = entry(k); e.styles = e.styles || {}; e.styles[name] = val; applyStyles(el, e.styles); save(); }
+    function commitText(el) {
+      el.contentEditable = "false"; el.classList.remove("v3-editing");
+      var k = el.getAttribute("data-v3");
+      var x = el.querySelector(":scope > .v3-x"); if (x) x.remove();
+      if (!(el.innerText || "").trim() && !el.querySelector("img,svg")) { removeEl(el); return; } // no words left = no element
+      entry(k).html = el.innerHTML; save();
+      if (on) badgesOn();
+    }
+    function toHex(c) { var m = /rgba?\((\d+),\s*(\d+),\s*(\d+)/.exec(c || ""); if (!m) return /^#/.test(c || "") ? c : "#000000"; return "#" + [m[1], m[2], m[3]].map(function (x) { return ("0" + Number(x).toString(16)).slice(-2); }).join(""); }
 
+    // ── tap to select ──
     area.addEventListener("click", function (ev) {
       if (!on) return;
-      if (ev.target.closest(".v3-bar") || ev.target.closest(".v3-panel")) return;
+      if (ev.target.closest(".v3-x")) return;
       var el = ev.target.closest("[data-v3]"); if (!el) return;
-      if (sel && sel.isContentEditable && sel.contains(el)) return; // typing inside the words
+      if (sel && sel.isContentEditable && sel.contains(el)) return;
       ev.preventDefault(); ev.stopPropagation();
       select(el);
     }, true);
+
+    // ── press-and-hold drag: move an element above or below its neighbours ──
+    var drag = null;
+    area.addEventListener("pointerdown", function (ev) {
+      if (!on || ev.target.closest(".v3-x")) return;
+      var el = ev.target.closest("[data-v3]"); if (!el || el.isContentEditable) return;
+      var start = { x: ev.clientX, y: ev.clientY }, timer = setTimeout(function () { begin(el, start); }, 260);
+      function cancel() { clearTimeout(timer); window.removeEventListener("pointerup", cancel); window.removeEventListener("pointermove", mv); }
+      function mv(e) { if (!drag && Math.hypot(e.clientX - start.x, e.clientY - start.y) > 12) cancel(); }
+      window.addEventListener("pointerup", cancel); window.addEventListener("pointermove", mv);
+    });
+    function begin(el, start) {
+      var ghost = el.cloneNode(true); ghost.className = "v3-drag-ghost"; ghost.style.width = el.getBoundingClientRect().width + "px"; document.body.appendChild(ghost);
+      drag = { el: el, ghost: ghost, target: null, after: false };
+      el.style.opacity = ".35";
+      function place(e) {
+        ghost.style.left = (e.clientX + 12) + "px"; ghost.style.top = (e.clientY + 12) + "px";
+        clearMarks();
+        var sibs = kidsOf(el.parentElement).filter(function (s) { return s !== el; }), best = null, bestD = 1e9, after = false;
+        sibs.forEach(function (s) { var r = s.getBoundingClientRect(), mid = r.top + r.height / 2, d = Math.abs(e.clientY - mid); if (d < bestD) { bestD = d; best = s; after = e.clientY > mid; } });
+        drag.target = best; drag.after = after;
+        if (best) best.classList.add(after ? "v3-drop-after" : "v3-drop");
+      }
+      function clearMarks() { area.querySelectorAll(".v3-drop,.v3-drop-after").forEach(function (s) { s.classList.remove("v3-drop", "v3-drop-after"); }); }
+      function up() {
+        window.removeEventListener("pointermove", place); window.removeEventListener("pointerup", up);
+        ghost.remove(); el.style.opacity = ""; clearMarks();
+        if (drag.target) { el.parentElement.insertBefore(el, drag.after ? drag.target.nextSibling : drag.target); recordMove(el); }
+        drag = null;
+      }
+      window.addEventListener("pointermove", place); window.addEventListener("pointerup", up);
+      document.body.style.userSelect = "none"; setTimeout(function () { document.body.style.userSelect = ""; }, 50);
+    }
 
     load();
   })();
