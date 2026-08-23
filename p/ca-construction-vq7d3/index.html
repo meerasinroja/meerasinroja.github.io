@@ -564,6 +564,14 @@
       var p = new URLSearchParams(location.search), mine = false;
       try { mine = localStorage.getItem("ms_owner") === "1" || p.get("me") === "1" || p.get("heat") === "1"; } catch (e) {}
       if (mine) document.getElementById("proto").hidden = false;
+      else {
+        // Plain link on her own device: ask BrandHub whether this network is hers (it learns her
+        // networks automatically whenever she uses the dashboard). Yes = show, and remember it.
+        fetch("https://brandhub-pro-claude-production.up.railway.app/api/page-analytics/me", { cache: "no-store" })
+          .then(function (r) { return r.json(); })
+          .then(function (j) { if (j && j.owner) { document.getElementById("proto").hidden = false; try { localStorage.setItem("ms_owner", "1"); } catch (e) {} } })
+          .catch(function () {});
+      }
     })();
   </script>
 
