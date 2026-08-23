@@ -800,6 +800,7 @@
     function save() {
       if (saveT) clearTimeout(saveT);
       saveT = setTimeout(function () {
+        if (!Object.keys(edits).length) { status.textContent = "Nothing to save"; return; } // an empty design is only ever sent by Reset all
         status.textContent = "Saving…";
         fetch(API + "/api/page-design", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ slug: SLUG, v: "v3", edits: edits }) })
           .then(function (r) { return r.json(); }).then(function (j) { status.textContent = j && j.ok ? "Saved" : "Not saved (" + ((j && j.error) || "error") + ")"; })
@@ -828,7 +829,7 @@
     area.parentElement.insertBefore(bar, area);
     status = bar.querySelector("#v3status");
     bar.querySelector("#v3toggle").addEventListener("click", function () { on = !on; this.textContent = "Edit: " + (on ? "ON — tap · drag · ×" : "off"); this.className = on ? "" : "off"; root.classList.toggle("v3-on", on); if (on) badgesOn(); else { badgesOff(); select(null); } });
-    bar.querySelector("#v3reset").addEventListener("click", function () { if (!confirm("Reset Version 3 back to the Version 2 look? Every edit, move and removal is undone.")) return; edits = {}; save(); setTimeout(function () { location.reload(); }, 700); });
+    bar.querySelector("#v3reset").addEventListener("click", function () { if (!confirm("Reset Version 3 back to the Version 2 look? Every edit, move and removal is undone.")) return; edits = {}; fetch(API + "/api/page-design", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ slug: SLUG, v: "v3", edits: {}, reset: true }) }).then(function () { location.reload(); }).catch(function () { location.reload(); }); });
 
     // ── panel ──
     var panel = document.createElement("div"); panel.className = "v3-panel"; panel.hidden = true;
