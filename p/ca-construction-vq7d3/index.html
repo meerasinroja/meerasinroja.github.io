@@ -791,7 +791,7 @@
     // ── toolbar ──
     var bar = document.createElement("div"); bar.className = "v3-bar";
     bar.innerHTML = '<span>VERSION 3 · EDITABLE</span><button id="v3toggle" class="off">Edit: off</button><button id="v3reset" class="off">Reset all</button><span class="st" id="v3status">Loaded</span>';
-    area.insertBefore(bar, area.firstChild);
+    area.parentElement.insertBefore(bar, area); // outside the keyed tree — inserting inside shifted every saved key by one
     status = bar.querySelector("#v3status");
     bar.querySelector("#v3toggle").addEventListener("click", function () { on = !on; this.textContent = "Edit: " + (on ? "ON — tap anything" : "off"); this.className = on ? "" : "off"; root.classList.toggle("v3-on", on); if (!on) select(null); });
     bar.querySelector("#v3reset").addEventListener("click", function () { if (!confirm("Reset Version 3 back to the Version 2 look? Your edits are removed.")) return; edits = {}; save(); location.reload(); });
