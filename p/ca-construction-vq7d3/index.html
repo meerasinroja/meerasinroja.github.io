@@ -936,8 +936,12 @@
       // mistaken for her and see this section. Removed. The ONLY thing that reveals this section
       // now is a marker tied to THIS BROWSER, never the network: ?me=1 / ?heat=1 once, or opening
       // from the "Open the page" button in her CRM (which already appends ?me=1).
+      // SECURITY FIX 2026-08-24 (again): the localStorage check used to read the GLOBAL "ms_owner"
+      // flag, which ms-analytics.js also sets from a plain ?heat=1 check on ANY page site-wide —
+      // so unlocking one lead's hidden content (even via an unrelated heat-map check) silently
+      // unlocked every OTHER lead's page forever on that browser. Now scoped per-slug.
       var p = new URLSearchParams(location.search), mine = false;
-      try { mine = localStorage.getItem("ms_owner") === "1" || p.get("me") === "1" || p.get("heat") === "1"; } catch (e) {}
+      try { mine = localStorage.getItem("ms_owner_page:" + window.MS_SLUG) === "1" || p.get("me") === "1" || p.get("heat") === "1"; } catch (e) {}
       if (mine) ["proto", "proto3"].forEach(function (id) { var el = document.getElementById(id); if (el) el.hidden = false; });
     })();
   </script>
@@ -1081,7 +1085,7 @@
   <script>
     (function () {
       var p = new URLSearchParams(location.search), mine = false;
-      try { mine = localStorage.getItem("ms_owner") === "1" || p.get("me") === "1" || p.get("heat") === "1"; } catch (e) {}
+      try { mine = localStorage.getItem("ms_owner_page:" + window.MS_SLUG) === "1" || p.get("me") === "1" || p.get("heat") === "1"; } catch (e) {}
       if (mine) { var el = document.getElementById("proto4"); if (el) el.hidden = false; }
     })();
   </script>

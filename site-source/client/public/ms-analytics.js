@@ -14,7 +14,14 @@
   // ?heat=1 heat-map view) marks this browser as the owner and it stops reporting for good.
   var P0 = new URLSearchParams(location.search), isOwner = false;
   try {
-    if (P0.get("me") === "1" || P0.get("heat") === "1") localStorage.setItem("ms_owner", "1");
+    if (P0.get("me") === "1" || P0.get("heat") === "1") {
+      localStorage.setItem("ms_owner", "1");
+      // Analytics exclusion above is deliberately global (her clicks never count anywhere).
+      // The per-page hidden-content reveal must NOT reuse that global flag — a heat-map check
+      // on one lead's page (or any page) must not silently unlock a DIFFERENT lead's hidden
+      // sections forever. Each pitch page checks its own "ms_owner_page:<slug>" key instead.
+      if (window.MS_SLUG) localStorage.setItem("ms_owner_page:" + window.MS_SLUG, "1");
+    }
     isOwner = localStorage.getItem("ms_owner") === "1";
   } catch (e) {}
   // A ?me=1 / ?heat=1 visit also registers the NETWORK it came from as hers (server keeps the
