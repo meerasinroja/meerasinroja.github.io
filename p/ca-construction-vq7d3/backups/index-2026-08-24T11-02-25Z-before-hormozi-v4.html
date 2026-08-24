@@ -947,136 +947,108 @@
        a network guess (that path was the leak, removed for good). -->
   <section class="proto" id="proto4" hidden style="padding:0 16px 48px">
 <style>
-  /* ── V4: Hormozi-style offer page — bold promise, value stack, blunt numbers, direct ask ── */
+  /* ── V4: hard-line converting rendition — no warmth, no exclamation points, facts and numbers only ── */
   .v4 { max-width: 780px; margin: 0 auto; color: #17130e; font-family: 'DM Sans', sans-serif; }
   .v4-divider { border-top: 3px solid #17130e; margin: 8px 0 28px; text-align: center; }
   .v4-divider span { display: inline-block; background: #faf6ef; padding: 6px 16px; transform: translateY(-50%); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #17130e; }
-  .v4 .eyebrow { display: inline-block; background: #eae2c2; color: #6b5215; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
-  .v4 h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(32px, 5.4vw, 50px); line-height: 1.05; margin: 0 0 16px; }
-  .v4 h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(24px, 3.6vw, 32px); line-height: 1.12; margin: 0 0 16px; }
-  .v4 .lede { font-size: 18px; font-weight: 600; line-height: 1.5; color: #2a251d; max-width: 620px; }
-  .v4 .hl { background: #f6d67a; padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
-  .v4 p { font-size: 15.5px; line-height: 1.65; color: #2a251d; }
-  .v4 .block { padding: 42px 0; border-bottom: 1px solid #dcd2c0; }
+  .v4 .tag { display: inline-block; background: #17130e; color: #faf6ef; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; margin-bottom: 16px; }
+  .v4 .num { font-family: 'DM Sans', sans-serif; font-weight: 800; }
+  .v4 h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(28px, 4.6vw, 42px); line-height: 1.08; margin: 0 0 18px; }
+  .v4 h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(20px, 3vw, 26px); line-height: 1.15; margin: 0 0 12px; }
+  .v4 p { font-size: 15.5px; line-height: 1.6; color: #2a251d; }
+  .v4 .block { padding: 40px 0; border-bottom: 1px solid #dcd2c0; }
   .v4 .block:last-child { border-bottom: 0; }
-  .v4 .bigpromise { background: #17130e; color: #faf6ef; border-radius: 16px; padding: 34px 28px; margin: 22px 0; }
-  .v4 .bigpromise p { color: #f0ead9; font-size: 17px; font-weight: 700; line-height: 1.5; margin: 0; }
-  .v4 .bigpromise b { color: #f6d67a; }
-  .v4 .stack { margin: 20px 0; }
-  .v4 .stack-item { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-top: 1px solid #dcd2c0; }
-  .v4 .stack-item:first-child { border-top: 0; }
-  .v4 .stack-item .ck { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #227d3e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; margin-top: 2px; }
-  .v4 .stack-item h4 { font-size: 15.5px; font-weight: 800; margin-bottom: 3px; }
-  .v4 .stack-item p { font-size: 14px; margin: 0; }
-  .v4 .stack-item .val { margin-left: auto; flex-shrink: 0; font-weight: 800; font-size: 13px; color: #6b6357; white-space: nowrap; padding-top: 3px; }
-  .v4 .totalrow { display: flex; justify-content: space-between; align-items: center; background: #f6d67a; border-radius: 10px; padding: 14px 18px; margin-top: 6px; font-weight: 800; }
   .v4 .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #17130e; margin: 22px 0; }
   .v4 .stat-row div { background: #faf6ef; padding: 18px 10px; text-align: center; }
-  .v4 .stat-row .n { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; }
-  .v4 .stat-row .l { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: #6b6357; margin-top: 4px; }
+  .v4 .stat-row .n { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 800; }
+  .v4 .stat-row .l { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #6b6357; margin-top: 4px; }
+  .v4 .fact { border-left: 4px solid #17130e; padding: 4px 0 4px 18px; margin: 16px 0; font-weight: 700; font-size: 15.5px; }
+  .v4 .fact .num { font-size: 18px; }
   .v4 table.v4t { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
   .v4t th { text-align: left; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: #6b6357; padding: 8px 10px; border-bottom: 2px solid #17130e; }
   .v4t td { padding: 10px 10px; border-bottom: 1px solid #dcd2c0; vertical-align: top; }
   .v4t tr:last-child td { border-bottom: 0; }
   .v4t td.who { font-weight: 800; white-space: nowrap; }
-  .v4 .why-not { display: grid; gap: 10px; margin-top: 16px; }
-  .v4 .why-not .q { font-weight: 800; font-size: 14.5px; }
-  .v4 .why-not .a { font-size: 14px; color: #4a443b; margin-top: 2px; }
-  .v4 .why-not div { background: #fff; border-radius: 12px; padding: 14px 16px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
-  .v4 .cta-block { background: #17130e; color: #faf6ef; padding: 42px 30px; text-align: center; margin: 8px 0; border-radius: 16px; }
-  .v4 .cta-block h2 { color: #faf6ef; }
+  .v4 .steps { counter-reset: v4step; margin-top: 18px; }
+  .v4 .step { counter-increment: v4step; display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 14px 0; border-top: 1px solid #dcd2c0; }
+  .v4 .step:first-child { border-top: 0; }
+  .v4 .step::before { content: counter(v4step, decimal-leading-zero); font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #b9884c; }
+  .v4 .step h4 { font-size: 14.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .03em; margin-bottom: 3px; }
+  .v4 .step p { font-size: 14px; }
+  .v4 .cta-block { background: #17130e; color: #faf6ef; padding: 38px 30px; text-align: center; margin: 8px 0; }
+  .v4 .cta-block h3 { color: #faf6ef; font-size: clamp(22px, 3.4vw, 30px); }
   .v4 .cta-block p { color: #cbc2b1; }
   .v4 .cta-btns { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 20px; }
-  .v4 .cta-btns .btn { text-transform: uppercase; letter-spacing: .04em; font-size: 14.5px; font-weight: 800; padding: 15px 26px; border-radius: 999px; border: 0; }
-  .v4 .cta-btns .btn.primary { background: #f6d67a; color: #17130e; }
-  .v4 .cta-btns .btn.secondary { background: #2b271e; color: #faf6ef; }
-  .v4 .cta-line { text-align: center; font-size: 12.5px; color: #8f887c; margin-top: 14px; }
-  .v4 .sign { margin-top: 10px; font-size: 14px; font-weight: 700; }
+  .v4 .cta-btns .btn { text-transform: uppercase; letter-spacing: .04em; font-size: 14.5px; font-weight: 800; padding: 14px 24px; border-radius: 3px; background: #faf6ef; color: #17130e; border: 0; }
+  .v4 .cta-line { text-align: center; font-size: 12.5px; color: #8f887c; margin-top: 12px; }
+  .v4 .sign { margin-top: 8px; font-size: 14px; font-weight: 700; }
   .v4 .sign .co { font-weight: 400; color: #6b6357; }
-  @media (max-width: 560px) { .v4 .stat-row { grid-template-columns: repeat(2, 1fr); } .v4 .stack-item { flex-wrap: wrap; } .v4 .stack-item .val { margin-left: 40px; } }
+  @media (max-width: 560px) { .v4 .stat-row { grid-template-columns: repeat(2, 1fr); } }
 </style>
 
 <div class="v4">
-  <div class="v4-divider"><span>Version 4 &middot; the offer &middot; only you can see this</span></div>
+  <div class="v4-divider"><span>Version 4 &middot; hard-line rendition &middot; only you can see this</span></div>
 
-  <!-- HOOK / BIG PROMISE -->
   <div class="block">
-    <span class="eyebrow">CA Construction Group &middot; The Offer</span>
-    <h1>Stop competing on price. Start being the <span class="hl">only builder they trust</span> with $250,000.</h1>
-    <p class="lede">You are one message change away from being the obvious, safe choice on every $100K&ndash;$500K job in your market, instead of one of five bids getting compared on price.</p>
-    <div class="bigpromise">
-      <p>Here is the deal, plain: right now your ads say <b>"get a free quote."</b> That single line is why price shoppers call you and homeowners with real money call someone else. Fix that one line, and you fix the whole funnel behind it.</p>
-    </div>
-    <div class="cta-btns" style="justify-content:flex-start">
-      <a class="btn primary" href="https://calendly.com/meera-meerasocial/30min" target="_blank" rel="noreferrer">Book the 30 min call</a>
-      <a class="btn secondary" href="tel:+13237474097">Call</a>
-      <a class="btn secondary" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social">Email</a>
-    </div>
-  </div>
-
-  <!-- THE NUMBERS -->
-  <div class="block">
-    <h2>The math, so there is no guessing.</h2>
+    <span class="tag">Marketing audit &middot; CA Construction Group</span>
+    <h2>Your ads are pricing you into losing bids.</h2>
+    <p>Every generic ad you run puts you in a lineup of five builders competing on the lowest number. Homeowners spending <span class="num">$100,000&ndash;$500,000</span> are not shopping for cheap. They are shopping for proof. Your ads currently offer none.</p>
     <div class="stat-row">
       <div><div class="n">$100K&ndash;$500K</div><div class="l">Per job</div></div>
-      <div><div class="n">4</div><div class="l">Builders you split leads with</div></div>
-      <div><div class="n">0</div><div class="l">Of them sell "safe"</div></div>
-      <div><div class="n">1</div><div class="l">Job pays for a year of this</div></div>
+      <div><div class="n">4</div><div class="l">Direct competitors</div></div>
+      <div><div class="n">0</div><div class="l">Own "safe choice"</div></div>
+      <div><div class="n">1</div><div class="l">Line killing your ads</div></div>
     </div>
-    <p>One extra $250,000 job pays for this entire engagement many times over. You do not need ten more leads a month. You need the next one or two big jobs to pick you instead of the cheaper bid.</p>
+    <div class="cta-btns" style="justify-content:flex-start">
+      <a class="btn" style="background:#17130e;color:#faf6ef" href="tel:+13237474097">Call</a>
+      <a class="btn" style="background:#17130e;color:#faf6ef" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social">Email</a>
+      <a class="btn" style="background:#b9884c;color:#17130e" href="https://calendly.com/meera-meerasocial/30min" target="_blank" rel="noreferrer">Book 30 min</a>
+    </div>
   </div>
 
-  <!-- VALUE STACK -->
   <div class="block">
-    <h2>Here is exactly what you get.</h2>
-    <div class="stack">
-      <div class="stack-item"><span class="ck">&#10003;</span><div><h4>Full ad and message audit</h4><p>Every dollar you have spent, mapped to what it actually attracted.</p></div><span class="val">Diagnosis above</span></div>
-      <div class="stack-item"><span class="ck">&#10003;</span><div><h4>The exact message shift</h4><p>Word for word, line by line: what your ads say instead of "get a free quote."</p></div><span class="val">Included</span></div>
-      <div class="stack-item"><span class="ck">&#10003;</span><div><h4>Lead tracking, every source tagged</h4><p>You will know which ad brought which lead, every time, no more guessing.</p></div><span class="val">Included</span></div>
-      <div class="stack-item"><span class="ck">&#10003;</span><div><h4>Retargeting for the ones who look and do not call</h4><p>Proof content: before/after, real jobs, real numbers, served to warm traffic.</p></div><span class="val">Included</span></div>
-      <div class="stack-item"><span class="ck">&#10003;</span><div><h4>A 30-day rollout plan, not a vague retainer</h4><p>Week by week, what changes and when.</p></div><span class="val">Included</span></div>
-    </div>
-    <div class="totalrow"><span>What this replaces</span><span>Every wasted click on the wrong lead</span></div>
-  </div>
-
-  <!-- WHO YOU ARE ACTUALLY FIGHTING -->
-  <div class="block">
-    <h2>What you are up against.</h2>
+    <h3>What you are actually selling against.</h3>
     <table class="v4t">
-      <tr><th>Competitor</th><th>Their position</th></tr>
+      <tr><th>Competitor</th><th>Position</th></tr>
       <tr><td class="who">NEO Builders</td><td>Speed. Six-week backyard builds.</td></tr>
       <tr><td class="who">ADU Build LA</td><td>Difficult sites. Hillsides, fire zones, city rules.</td></tr>
       <tr><td class="who">Crystal Peak Construction</td><td>Ground-up backyard builds, full scope.</td></tr>
       <tr><td class="who">Martins Construction</td><td>General remodels. Kitchens, bathrooms.</td></tr>
     </table>
-    <p><strong>Not one of them owns "safe" on a six-figure decision.</strong> Whoever takes that position first wins every homeowner who is scared of getting burned, which is most of them.</p>
+    <div class="fact">None of them sell <span class="num">safety on a six-figure decision</span>. That position is open.</div>
   </div>
 
-  <!-- OBJECTIONS, HANDLED -->
   <div class="block">
-    <h2>What you are probably thinking.</h2>
-    <div class="why-not">
-      <div><p class="q">"We tried ads before and they did not work."</p><p class="a">They were generic. Generic ads buy price shoppers who compare five bids and take the lowest. Specific ads buy people who already decided to pay for safety.</p></div>
-      <div><p class="q">"Is a call worth 30 minutes?"</p><p class="a">One job here is worth more than a year of ad spend. Thirty minutes to potentially win the next one is not a big ask.</p></div>
-      <div><p class="q">"What if it is not a fit?"</p><p class="a">Then you walk away with the diagnosis above and the message fix, and you have lost nothing but half an hour.</p></div>
+    <h3>The line losing you the job.</h3>
+    <p><strong>"Get a free quote."</strong> That is a price-shopper magnet. It puts you in a bid war you cannot win on price, because you are not the cheapest, and you should not try to be.</p>
+    <div class="fact">The fix: sell protection, not a quote. <span class="num">"We are the safest choice. No scams, no failed inspections, no bad work inside the walls."</span></div>
+  </div>
+
+  <div class="block">
+    <h3>What changes, in order.</h3>
+    <div class="steps">
+      <div class="step"><div><h4>Audit</h4><p>Every current ad, every dollar, mapped to who it actually attracted.</p></div></div>
+      <div class="step"><div><h4>Track</h4><p>Every lead tagged to the message that brought them in. No more guessing which ad paid for itself.</p></div></div>
+      <div class="step"><div><h4>Retarget</h4><p>Anyone who looked and did not call sees proof next: before/after, real jobs, real numbers.</p></div></div>
+      <div class="step"><div><h4>Convert</h4><p>A six-figure decision is not made in one visit. The system that gets them back is built once, runs every week.</p></div></div>
     </div>
   </div>
 
-  <!-- THE ASK -->
   <div class="block" style="border-bottom:0">
     <div class="cta-block">
-      <h2>The next $250,000 job is deciding between you and a cheaper bid right now.</h2>
-      <p>Book 30 minutes. I walk you through the fix and the first 30 days. You decide after, not before.</p>
+      <h3>The next step is one call.</h3>
+      <p>Twenty minutes. I walk you through the fix and the first 30 days. You decide after, not before.</p>
       <div class="cta-btns">
-        <a class="btn primary" href="https://calendly.com/meera-meerasocial/30min" target="_blank" rel="noreferrer">Book 30 minutes</a>
-        <a class="btn secondary" href="tel:+13237474097">Call (323) 747-4097</a>
-        <a class="btn secondary" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social">Email</a>
+        <a class="btn" href="https://calendly.com/meera-meerasocial/30min" target="_blank" rel="noreferrer">Book 30 minutes</a>
+        <a class="btn" href="tel:+13237474097">Call (323) 747-4097</a>
+        <a class="btn" href="mailto:meera@meerasocial.com?subject=CA%20Construction%20x%20Meera%20Social">Email</a>
       </div>
       <p class="cta-line">meera@meerasocial.com</p>
     </div>
     <p class="sign">Meera Sinroja <span class="co">&middot; Meera Social</span></p>
   </div>
 </div>
+
   </section>
   <script>
     (function () {
