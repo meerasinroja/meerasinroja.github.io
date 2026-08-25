@@ -1095,63 +1095,72 @@
        real headline/subhead/CTA, quoted exactly, nothing invented. Right side is the fix. -->
   <section class="proto" id="protoCompare" hidden style="padding:0 16px 48px">
 <style>
-  .cmp { max-width: 900px; margin: 0 auto; color: #17130e; font-family: 'DM Sans', sans-serif; }
+  .cmp { max-width: 920px; margin: 0 auto; color: #17130e; font-family: 'DM Sans', sans-serif; }
   .cmp h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 40px); line-height: 1.1; margin: 0 0 10px; text-align: center; }
   .cmp .lede { text-align: center; font-size: 15px; color: #4a443b; max-width: 620px; margin: 0 auto 30px; }
   .cmp .source { text-align: center; font-size: 11px; color: #8f887c; margin-bottom: 34px; }
   .cmp .source a { color: #8f887c; }
-  .cmp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: stretch; }
-  @media (max-width: 680px) { .cmp-grid { grid-template-columns: 1fr; } }
-  .cmp-col { border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; }
+  .cmp-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: #17130e; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.15); }
+  @media (max-width: 680px) { .cmp-grid { grid-template-columns: 1fr; gap: 4px; } }
+  .cmp-vs { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 5; width: 54px; height: 54px; border-radius: 50%; background: #17130e; border: 3px solid #f6d67a; color: #f6d67a; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 15px; letter-spacing: .03em; }
+  @media (max-width: 680px) { .cmp-vs { top: auto; bottom: -27px; } }
+  .cmp-col { position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .cmp-stamp { position: absolute; top: 22px; right: -46px; width: 190px; transform: rotate(38deg); text-align: center; padding: 7px 0; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; z-index: 3; box-shadow: 0 4px 10px rgba(0,0,0,.25); }
+  .cmp-them .cmp-stamp { background: #a83232; color: #fff; }
+  .cmp-us .cmp-stamp { background: #227d3e; color: #fff; }
   .cmp-tag { text-align: center; padding: 10px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
-  .cmp-them { background: #fff; border: 2px solid #e3e3e3; }
-  .cmp-them .cmp-tag { background: #e3e3e3; color: #555; }
-  .cmp-them .cmp-body { padding: 28px 22px; flex: 1; }
+  .cmp-them { background: #fff; }
+  .cmp-them .cmp-tag { background: #ececec; color: #555; }
+  .cmp-them .cmp-body { padding: 30px 24px 26px; flex: 1; opacity: .8; filter: saturate(.6); }
   .cmp-them .cmp-hero { height: 130px; border-radius: 10px; background: linear-gradient(135deg,#dfe6ee,#c9d3dd); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #6b7684; text-align: center; padding: 10px; margin-bottom: 18px; }
-  .cmp-them h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #2456a6; margin: 0 0 10px; }
+  .cmp-them h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #2456a6; margin: 0 0 10px; }
   .cmp-them p.sub { font-size: 13.5px; color: #555; line-height: 1.55; margin: 0 0 20px; }
   .cmp-them .cmp-cta { display: inline-block; background: #2456a6; color: #fff; font-size: 12px; font-weight: 800; text-transform: uppercase; padding: 11px 20px; border-radius: 6px; }
   .cmp-them .cmp-note { margin-top: 18px; font-size: 12px; color: #a83232; font-weight: 700; }
   .cmp-us { background: #17130e; }
   .cmp-us .cmp-tag { background: #f6d67a; color: #17130e; }
-  .cmp-us .cmp-body { padding: 28px 22px; flex: 1; color: #faf6ef; }
+  .cmp-us .cmp-body { padding: 30px 24px 26px; flex: 1; color: #faf6ef; }
   .cmp-us .cmp-hero { height: 130px; border-radius: 10px; background: linear-gradient(135deg,#3a2f1f,#17130e); border: 1px dashed rgba(246,214,122,.4); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #d8c9a3; text-align: center; padding: 10px; margin-bottom: 18px; }
-  .cmp-us h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 800; color: #f6d67a; margin: 0 0 10px; }
+  .cmp-us h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #f6d67a; margin: 0 0 10px; line-height: 1.15; }
+  .cmp-us h3 .same { color: #faf6ef; opacity: .55; }
   .cmp-us p.sub { font-size: 13.5px; color: #d8cdb8; line-height: 1.55; margin: 0 0 20px; }
   .cmp-us .cmp-cta { display: inline-block; background: #f6d67a; color: #17130e; font-size: 12px; font-weight: 800; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; }
   .cmp-us .cmp-note { margin-top: 18px; font-size: 12px; color: #8fd19e; font-weight: 700; }
-  .cmp-verdict { margin-top: 30px; background: #eae2c2; border-radius: 14px; padding: 20px 24px; text-align: center; }
+  .cmp-verdict { margin-top: 40px; background: #eae2c2; border-radius: 14px; padding: 20px 24px; text-align: center; }
   .cmp-verdict p { margin: 0; font-size: 15px; font-weight: 700; color: #3a2f10; }
 </style>
 <div class="cmp">
   <div class="v4-divider"><span>The real comparison &middot; only you can see this</span></div>
-  <h1>Same city. Same job size. One message that protects, one that doesn't.</h1>
-  <p class="lede">This is NEO Builders' actual homepage, word for word, next to what CA Construction's should say instead.</p>
+  <h1>Same opening line. One dead end, one that closes the sale.</h1>
+  <p class="lede">This is NEO Builders' actual homepage, word for word, next to the exact same line with CA Construction's fix built onto it.</p>
   <p class="source">Source: <a href="https://www.neobuildersadu.com/" target="_blank" rel="noreferrer">neobuildersadu.com</a>, checked live Aug 24, 2026</p>
   <div class="cmp-grid">
+    <div class="cmp-vs">VS</div>
     <div class="cmp-col cmp-them">
+      <div class="cmp-stamp">Pathetic</div>
       <div class="cmp-tag">NEO Builders &middot; their real site</div>
       <div class="cmp-body">
         <div class="cmp-hero">Their actual hero photo: a finished ADU exterior, white background, no message about risk or protection</div>
         <h3>Build Your ADU in Los Angeles</h3>
         <p class="sub">"Turn unused space into a home that works harder for you. NEO Builders is a locally owned construction and design company specializing in custom ADUs for Los Angeles homeowners."</p>
         <span class="cmp-cta">Get a Free Consultation</span>
-        <p class="cmp-note">Speed and service. Nothing about scams, failed inspections, or protecting a six-figure investment. A price shopper reads this and shops three more just like it.</p>
+        <p class="cmp-note">Stops at the job. Nothing about scams, failed inspections, or protecting a six-figure investment. A price shopper reads this and shops three more just like it.</p>
       </div>
     </div>
     <div class="cmp-col cmp-us">
+      <div class="cmp-stamp">Winning formula</div>
       <div class="cmp-tag">CA Construction &middot; the fix</div>
       <div class="cmp-body">
         <div class="cmp-hero">A real CA Construction job photo goes here, not a stock exterior</div>
-        <h3>We Protect Your Investment</h3>
+        <h3><span class="same">We Build Your ADU.</span><br>And Protect Your Investment.</h3>
         <p class="sub">Before you spend $100,000 or more, make sure the builder is doing the hidden work right, not just making it look good in photos. No scams, no failed inspections, no bad work inside the walls.</p>
         <span class="cmp-cta">Book Your Strategy Call</span>
-        <p class="cmp-note">Same market, same job size, but this sells protection, not speed. It's the only message built for someone spending real money and afraid of getting burned.</p>
+        <p class="cmp-note">Same job, same city, one extra promise. That promise is the entire reason to pick CA Construction over anyone else on this list.</p>
       </div>
     </div>
   </div>
   <div class="cmp-verdict">
-    <p>NEO owns speed. Nobody owns safe. That's the whole opening, and it's sitting right there.</p>
+    <p>Same starting line. NEO stops at the build. CA Construction adds the one sentence that actually closes a six-figure decision.</p>
   </div>
 </div>
   </section>
