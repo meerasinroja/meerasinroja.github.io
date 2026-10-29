@@ -10,8 +10,8 @@ export default function Privacy() {
           <Link href="/" className="flex items-center gap-2 text-[#2a2a2a] hover:text-[#c17f4a] transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="font-bold text-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
-              <span className="text-[#2a2a2a]">Meera</span>
-              <span className="text-[#c17f4a]">Social</span>
+              <span className="text-[#2a2a2a]">Meera's </span>
+              <span className="text-[#c17f4a]">Straight Social</span>
             </span>
           </Link>
         </div>

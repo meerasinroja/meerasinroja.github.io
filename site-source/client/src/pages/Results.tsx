@@ -233,7 +233,7 @@ export default function Results() {
           <a href="/" className="flex items-center gap-2 text-[#2a2a2a] hover:text-[#c17f4a] transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="text-lg font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Meera<span className="text-[#c17f4a]">Social</span>
+              Meera's <span className="text-[#c17f4a]">Straight Social</span>
             </span>
           </a>
           <a
@@ -1122,9 +1122,9 @@ export default function Results() {
       <footer className="py-8 border-t border-black/5 bg-white">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
           <a href="/" className="text-lg font-bold text-[#2a2a2a]" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Meera<span className="text-[#c17f4a]">Social</span>
+            Meera's <span className="text-[#c17f4a]">Straight Social</span>
           </a>
-          <p className="text-[#2a2a2a] text-xs">&copy; 2026 Meera Social</p>
+          <p className="text-[#2a2a2a] text-xs">&copy; 2026 Meera's Straight Social</p>
         </div>
       </footer>
     </div>

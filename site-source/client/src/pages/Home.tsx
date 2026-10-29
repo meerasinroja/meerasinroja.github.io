@@ -56,7 +56,7 @@ export default function Home() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#faf9f7]/90 backdrop-blur-sm border-b border-black/5">
         <div className="container flex items-center justify-between h-16">
           <a href="#" className="text-xl font-bold text-[#2a2a2a] tracking-tight" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Meera<span className="text-[#c17f4a]">Social</span>
+            Meera's <span className="text-[#c17f4a]">Straight Social</span>
           </a>
           <div className="hidden md:flex items-center gap-8 text-sm text-[#2a2a2a] font-medium">
             <a href="#what-i-do" className="hover:text-[#c17f4a] transition-colors">What I Do</a>
@@ -464,7 +464,7 @@ export default function Home() {
       <footer className="py-8 border-t border-black/5">
         <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
           <a href="#" className="text-lg font-bold text-[#2a2a2a]" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Meera<span className="text-[#c17f4a]">Social</span>
+            Meera's <span className="text-[#c17f4a]">Straight Social</span>
           </a>
           <div className="flex items-center gap-4 text-sm text-[#2a2a2a] font-medium">
             <a href="tel:+13237474097" className="hover:text-[#c17f4a] transition-colors flex items-center gap-1">
@@ -476,7 +476,7 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <a href="/privacy" className="text-[#2a2a2a]/50 text-xs hover:text-[#c17f4a] transition-colors">Privacy & Terms</a>
-            <p className="text-[#2a2a2a] text-xs">&copy; 2026 Meera Social</p>
+            <p className="text-[#2a2a2a] text-xs">&copy; 2026 Meera's Straight Social</p>
           </div>
         </div>
       </footer>
