@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Major Construction &middot; The Offer</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #faf6ef; color: #17130e; font-family: 'DM Sans', -apple-system, sans-serif; }
+  .hero-wrap { position: relative; overflow: hidden; }
+  .blob { position: absolute; border-radius: 50%; background: #ecd9bd; opacity: .55; z-index: 0; pointer-events: none; }
+  .wrap { max-width: 780px; margin: 0 auto; padding: 48px 20px; position: relative; z-index: 1; }
+  h1 { font-family: Georgia, 'Playfair Display', serif; font-weight: 900; font-size: clamp(30px, 5.2vw, 48px); line-height: 1.08; margin: 0 0 16px; }
+  h2 { font-family: Georgia, 'Playfair Display', serif; font-weight: 800; font-size: clamp(22px, 3.4vw, 30px); margin: 0 0 16px; }
+  h4 { font-size: 15px; font-weight: 800; margin: 0 0 4px; }
+  p { font-size: 15.5px; line-height: 1.65; color: #2a251d; }
+  .eyebrow { font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: #6b5215; background: #f6d67a; display: inline-block; padding: 5px 12px; border-radius: 999px; }
+  .hero-photo { margin: 20px 0; border-radius: 16px; overflow: hidden; }
+  .hero-photo img { width: 100%; display: block; }
+  .hero-photo-empty { border-radius: 16px; padding: 48px 20px; text-align: center; background: linear-gradient(135deg, #f6d67a 0%, #eab86b 100%); }
+  .hero-photo-empty span { font-size: 14px; font-weight: 800; color: #17130e; }
+  .bigpromise { background: #17130e; color: #faf6ef; border-radius: 16px; padding: 28px 24px; margin: 22px 0; border-left: 6px solid #f6d67a; }
+  .bigpromise p { color: #f0ead9; font-size: 16.5px; font-weight: 700; line-height: 1.55; margin: 0; }
+  .block { padding: 36px 0; border-top: 1px solid #dcd2c0; }
+  .block:first-of-type { border-top: 0; }
+  .block:nth-of-type(even) { background: #eddcc4; margin: 0 -20px; padding: 36px 20px; border-radius: 20px; }
+  .cta { background: #17130e; color: #faf6ef; border-radius: 16px; padding: 32px 26px; text-align: center; }
+  .cta h2 { color: #faf6ef; } .cta p { color: #cbc2b1; }
+  .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+  .btn { text-transform: uppercase; font-weight: 800; font-size: 14px; letter-spacing: .03em; padding: 13px 22px; border-radius: 999px; text-decoration: none; }
+  .btn.gold { background: #f6d67a; color: #17130e; } .btn.dark { background: #2b271e; color: #faf6ef; }
+  footer { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 13px; font-weight: 700; color: #4a443b; padding: 28px 0; }
+  .founder-photo { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+  .founder-photo-empty { display: flex; align-items: center; justify-content: center; font-size: 8px; font-weight: 800; text-align: center; line-height: 1.2; background: #f6d67a; color: #17130e; }
+  .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #17130e; margin: 22px 0; }
+  .stat-row div { background: #faf6ef; padding: 16px 8px; text-align: center; }
+  .stat-row .n { font-family: Georgia, serif; font-size: 22px; font-weight: 800; color: #b9884c; }
+  .stat-row .l { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #6b6357; margin-top: 4px; }
+  .stack-item { display: flex; gap: 12px; align-items: flex-start; padding: 14px 0; border-top: 1px solid #dcd2c0; }
+  .stack-item:first-child { border-top: 0; }
+  .stack-item .ck { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: #227d3e; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; }
+  .stack-item .val { margin-left: auto; font-weight: 800; font-size: 12px; color: #6b6357; white-space: nowrap; }
+  .obj { background: #fff; border-radius: 12px; padding: 14px 16px; margin-bottom: 10px; box-shadow: 0 6px 20px rgba(0,0,0,.06); }
+  .obj .q { font-weight: 800; font-size: 14.5px; margin: 0 0 2px; } .obj .a { font-size: 14px; color: #4a443b; margin: 0; }
+  .tm { background: #efe7d8; border-left: 4px solid #cdb08b; border-radius: 12px; padding: 16px 18px; margin-bottom: 12px; }
+  .tm .tq { font-size: 15.5px; line-height: 1.55; color: #2b241c; margin: 0 0 10px; font-style: italic; }
+  .tm .tn { font-size: 13px; font-weight: 800; color: #2b241c; margin: 0; text-transform: uppercase; letter-spacing: .03em; }
+  .tm .tn span { display: block; font-weight: 500; text-transform: none; letter-spacing: 0; color: #6c5a46; margin-top: 2px; }
+  @media (max-width: 560px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+</style>
+<script>window.MS_SLUG = "major-construction-c53167";</script>
+<script src="/ms-analytics.js?v=4" defer></script>
+</head>
+<body>
+<div class="hero-wrap">
+  <div class="blob" style="width:280px;height:280px;top:-80px;right:-100px;"></div>
+  <div class="blob" style="width:140px;height:140px;top:120px;right:140px;opacity:.4;"></div>
+<div class="wrap">
+  <p class="eyebrow">Major Construction &middot; The Offer</p>
+  <h1>Major Construction: one more job a month, in Glendale</h1>
+  <p>Major Construction has a website and an Instagram, but nothing yet that shows which of them brings in booked jobs. For a general contractor in Glendale, one job can be worth thousands. This page shows the fix.</p>
+  <div class="hero-photo hero-photo-empty"><span>Add a real photo for Major Construction here</span></div>
+  <div class="bigpromise"><p>I will put tracked ads on your Instagram, with every lead logged behind Major Construction, so more Glendale homeowners find you and you can see what each job cost to win.</p></div>
+  <p><a class="btn dark" href="tel:7472287330">Call</a> &nbsp;<a class="btn dark" href="mailto:info@major.construction?subject=Major%20Construction%20x%20Meera%20Social">Email</a></p>
+</div>
+</div>
+<div class="wrap" style="padding-top:0">
+  <div class="block">
+    <h2>The math, so there is no guessing</h2>
+    <div class="stat-row"><div><div class="n">28x</div><div class="l">best return on ad spend for a client ($375 in, $10,524 out)</div></div><div><div class="n">5,800%</div><div class="l">Instagram follower growth for a client</div></div><div><div class="n">45%</div><div class="l">more Google reviews for a client</div></div><div><div class="n">7 years</div><div class="l">doing only this, in Los Angeles</div></div></div>
+  </div>
+
+  <div class="block">
+    <h2>Here is exactly what you get</h2>
+    <div><div class="stack-item"><span class="ck">&#10003;</span><div><h4>Your work, seen</h4><p>Finished general contractor jobs shown where Glendale homeowners look before they call.</p></div><span class="val">Visibility</span></div><div class="stack-item"><span class="ck">&#10003;</span><div><h4>Tracked ads</h4><p>Ads that send people to a simple form or a call, so every inquiry is logged.</p></div><span class="val">Leads</span></div><div class="stack-item"><span class="ck">&#10003;</span><div><h4>Know what works</h4><p>You see which channel brings the jobs, so you keep what pays and drop what does not.</p></div><span class="val">Tracking</span></div><div class="stack-item"><span class="ck">&#10003;</span><div><h4>Done for you</h4><p>I run it. You keep working on jobs.</p></div><span class="val">Support</span></div></div>
+  </div>
+
+  <div class="block">
+    <h2>What you are probably thinking</h2>
+    <div class="obj"><p class="q">"I already get jobs from referrals."</p><p class="a">Good. This adds a second source, so a slow month does not hurt as much.</p></div><div class="obj"><p class="q">"I do not have time for social media."</p><p class="a">I handle it. You just keep doing the work.</p></div><div class="obj"><p class="q">"How do I know it pays off?"</p><p class="a">Every inquiry is tracked, so you see what each job cost to win.</p></div>
+  </div>
+
+  <div class="block">
+    <h2>What my clients say</h2>
+    <div class="tm"><p class="tq">&ldquo;It was a pleasure working together over the years, and I always appreciated Team Meera Social's creativity, responsiveness, and strategic input. They really helped elevate our social presence in a meaningful way!&rdquo;</p><p class="tn">Ben Yildrim<span>Owner, German Gastro, a multi-location hospitality group in LA</span></p></div><div class="tm"><p class="tq">&ldquo;Meera is easily the top 3 social media managers in LA&rdquo;</p><p class="tn">Rutu S</p></div>
+  </div>
+
+  <div class="block">
+    <div class="cta">
+      <h2>Let us find Major Construction one more job a month</h2>
+      <p>Book a short call and I will walk you through it.</p>
+      <div class="btns">
+        <a class="btn gold" href="https://calendly.com/meera-meerasocial/30min" target="_blank" rel="noreferrer">Book a time</a>
+        <a class="btn gold" href="tel:7472287330">Call</a>
+        <a class="btn gold" href="mailto:info@major.construction?subject=Major%20Construction%20x%20Meera%20Social">Email</a>
+      </div>
+      <p style="margin-top:14px;font-size:13px;color:#8f887c">(747) 228-7330 &middot; info@major.construction</p>
+    </div>
+  </div>
+
+  <footer><div class="founder-photo founder-photo-empty">Add Meera's photo here</div><span>Meera Sinroja, Founder &middot; Meera Social</span></footer>
+</div>
+</body>
+</html>
