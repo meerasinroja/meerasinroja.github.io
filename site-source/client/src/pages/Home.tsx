@@ -285,6 +285,57 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Her order 5 Nov 2026: my process. We listen to what your customers say and build the strategy around it. */}
+      <section id="process" className="py-16 md:py-24 relative">
+        <div className="container relative z-10">
+          <div className="max-w-2xl mb-12">
+            <p className="text-[#c17f4a] text-sm font-bold uppercase tracking-wider mb-3">My process</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2a2a2a] mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              We listen before we create.
+            </h2>
+            <p className="text-[#2a2a2a] text-lg leading-relaxed">
+              Most agencies start with what they want to post. We start with what your customers are already saying about you. Then every post, ad and video is built on their words, not guesses.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                title: "Deep dive into every review",
+                desc: "Google, Yelp and every review site. We read every review you have, and your competitors' too, so we know exactly why customers choose you and what they fear elsewhere."
+              },
+              {
+                title: "Listen to your social media",
+                desc: "Comments, messages, tags and mentions. We study what people ask, praise and worry about, in their own words."
+              },
+              {
+                title: "Find the patterns",
+                desc: "We turn hundreds of opinions into a clear picture: your strongest selling points, the doubts that stop people booking, and the exact words that make them say yes."
+              },
+              {
+                title: "Build the strategy around it",
+                desc: "Your content, ads and videos answer what your customers care about most. And we keep listening every month, so the strategy keeps getting sharper."
+              },
+            ].map((step, i) => (
+              <motion.div
+                key={i}
+                className="bg-white p-6 rounded-xl border border-black/5 hover:border-[#c17f4a]/30 hover:shadow-md transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+              >
+                <div className="w-10 h-10 flex items-center justify-center bg-[#c17f4a] text-white rounded-lg mb-4 font-bold">
+                  {i + 1}
+                </div>
+                <h3 className="font-semibold text-[#2a2a2a] mb-2">{step.title}</h3>
+                <p className="text-[#2a2a2a] text-sm leading-relaxed">{step.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Results — Rounded dark section with graphics */}
       <section id="results" className="py-16 md:py-24 bg-[#2a2a2a] text-white rounded-3xl mx-4 md:mx-8 relative overflow-hidden">
         {/* Abstract shapes graphic - background */}
