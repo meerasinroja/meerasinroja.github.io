@@ -148,13 +148,14 @@ body{font-size:16px;letter-spacing:0}
   addEventListener("load", function () {
     document.querySelectorAll('a[href*="dubsado.com/public/form"]').forEach(function (a) {
       if (!a.className && !a.closest("header")) return; // plain text links stay as they are
-      var c = getComputedStyle(a), px = function (v) { return parseFloat(v) || 0; };
-      a.style.fontSize = (px(c.fontSize) - 2) + "px";
-      a.style.paddingTop = a.style.paddingBottom = Math.max(0, px(c.paddingTop) - 4) + "px";
-      a.style.paddingLeft = a.style.paddingRight = Math.max(0, px(c.paddingLeft) - 4) + "px";
-      if (px(c.minHeight)) a.style.minHeight = (px(c.minHeight) - 8) + "px";
-      if (px(c.minWidth)) a.style.minWidth = "min(" + (px(c.minWidth) - 20) + "px, 100%)";
-      a.style.maxWidth = "100%";
+      var c = getComputedStyle(a), px = function (v) { return parseFloat(v) || 0; }, set = function (k, v) { a.style.setProperty(k, v, "important"); };
+      // The page sets these sizes as important, so this has to as well.
+      set("font-size", (px(c.fontSize) - 2) + "px");
+      set("padding-top", Math.max(0, px(c.paddingTop) - 4) + "px"); set("padding-bottom", Math.max(0, px(c.paddingBottom) - 4) + "px");
+      set("padding-left", Math.max(0, px(c.paddingLeft) - 4) + "px"); set("padding-right", Math.max(0, px(c.paddingRight) - 4) + "px");
+      if (px(c.minHeight)) set("min-height", (px(c.minHeight) - 8) + "px");
+      if (px(c.minWidth)) set("min-width", "min(" + (px(c.minWidth) - 20) + "px, 100%)");
+      set("max-width", "100%");
     });
   });
 </script>
