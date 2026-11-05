@@ -179,6 +179,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Her order 5 Nov 2026: website is the base, social media is where people look now; dentist line */}
+      <section id="why-social" className="py-16 md:py-20 relative">
+        <div className="container relative z-10">
+          <motion.div
+            className="max-w-3xl mx-auto text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2a2a2a] mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Your website is the base. Your social media is where people look now.
+            </h2>
+            <p className="text-[#2a2a2a] text-lg leading-relaxed">
+              Your website is good as a base. But more and more people are tuning in to your social media to see your most recent befores and afters.
+            </p>
+          </motion.div>
+          <motion.div
+            className="max-w-3xl mx-auto mt-10 bg-[#2a2a2a] text-white rounded-2xl p-8 md:p-10 border-l-4 border-[#c17f4a]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <p className="text-[#c17f4a] text-sm font-bold uppercase tracking-wider mb-3">For dentists</p>
+            <p className="text-xl md:text-2xl font-bold leading-snug" style={{ fontFamily: "'Playfair Display', serif" }}>
+              People can put on makeup and get rid of their blemishes. A smile is something only a dentist can fix. You can't cover up a smile.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* What I Do — Card grid with graphics */}
       <section id="what-i-do" className="py-16 md:py-24 relative">
         {/* Waves graphic - right side */}
