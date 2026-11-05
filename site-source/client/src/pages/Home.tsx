@@ -333,6 +333,23 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+
+          {/* Her order 5 Nov 2026: competitor analysis, to set you apart and make you the top choice in your industry. */}
+          <motion.div
+            className="mt-10 bg-[#2a2a2a] text-white rounded-2xl p-8 md:p-10 border-l-4 border-[#c17f4a]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+          >
+            <p className="text-[#c17f4a] text-sm font-bold uppercase tracking-wider mb-3">Competitor analysis</p>
+            <h3 className="text-2xl md:text-3xl font-bold leading-snug mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+              We study your competitors, so your customers instantly know why to choose you.
+            </h3>
+            <p className="text-white/85 text-lg leading-relaxed">
+              We go through your competitors' reviews, social media and ads to find where they fall short and where you shine. Then we build your brand around that difference, so you stand apart and stand out as the top name in your industry.
+            </p>
+          </motion.div>
         </div>
       </section>
 
