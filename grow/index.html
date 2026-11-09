@@ -197,6 +197,19 @@
   <p class="week">Live within the week of our call.</p>
 </div></section>
 
+<!-- 5b. DENTAL STATEMENT: her dental marketing notes (8 Nov 2026), shown only on the Dentist pill -->
+<section id="dental" hidden><div class="wrap">
+  <span class="eyebrow">For dental practices</span>
+  <h2>How I market a dental practice</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><div><h3>Qualified patients, not just leads</h3><p>Lead quality comes first. The ads and the follow up are built to bring in people who actually book a visit, not a pile of names that never pick up.</p></div></div>
+    <div class="step"><div class="n">2</div><div><h3>Three videos on your website</h3><p>People looking for a dentist want to know you before they call, and in all the scrolling a video is the thing they will press play on. We make three: get to know us, why you love what you do, and what you want to tell someone looking for a new dentist.</p></div></div>
+    <div class="step"><div class="n">3</div><div><h3>Your reviews where new patients can see them</h3><p>If you have a good number of Google or Yelp reviews, that number belongs on your website, with a review widget and a Google Maps widget. I tell your website people exactly what to add.</p></div></div>
+    <div class="step"><div class="n">4</div><div><h3>Short videos where Google looks</h3><p>Google now shows short videos in search and picks them up from Facebook, Instagram, TikTok and YouTube. Your practice needs to be on there.</p></div></div>
+    <div class="step"><div class="n">5</div><div><h3>Email that brings patients back</h3><p>Reminders for the yearly cleaning and checkups, so patients keep coming back year after year. It is one of the best returns in the whole plan. Your front desk is part of the plan too, and every step is tracked.</p></div></div>
+  </div>
+</div></section>
+
 <!-- 6. PROOF: who Meera is, real clients only -->
 <section><div class="wrap">
   <span class="eyebrow">Who you are talking to</span>
@@ -359,6 +372,7 @@
     document.getElementById("money").innerHTML = v.money;
     document.getElementById("tip-ads").textContent = v.ads;
     document.getElementById("tip-content").textContent = v.content;
+    document.getElementById("dental").hidden = (k !== "dentist");
     try { localStorage.setItem("ms_grow_v", k); } catch (e) {}
     try { history.replaceState(null, "", "#" + k); } catch (e) {}
     if (scroll) document.getElementById("yes").scrollIntoView({ behavior: "smooth", block: "start" });
