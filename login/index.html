@@ -1,0 +1,47 @@
+<!DOCTYPE html><html lang="en"><head><meta name="darkreader-lock"><meta name="color-scheme" content="only light"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Meera Social — Client Login</title><meta name="description" content="Client login for Meera Social dental practices."><meta name="robots" content="noindex"><link rel="canonical" href="https://www.meerasocial.com/login/"><style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700&display=swap');
+:root{--cream:#f6f0e6;--paper:#fffaf2;--ink:#171714;--muted:#767168;--line:#cfc8bc;--gold:#b29660}*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:'DM Sans',Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column}a{color:inherit}
+header{background:rgba(246,240,230,.96);border-bottom:1px solid #ded6c8}.nav{width:min(1380px,calc(100% - 48px));margin:auto;min-height:79px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{font-family:'Barlow Condensed',Impact,sans-serif;font-size:35px;font-weight:800;font-style:italic;white-space:nowrap;letter-spacing:-1px;text-decoration:none}.brand span{color:var(--gold)}.back{font-size:11px;text-transform:uppercase;letter-spacing:.16em;font-weight:700;text-decoration:none}
+main{flex:1;display:grid;place-items:center;padding:48px 20px}.card{width:min(460px,100%);background:var(--paper);border:1px solid var(--line);padding:38px 34px 34px}
+.eyebrow{text-transform:uppercase;letter-spacing:.22em;font-size:11px;font-weight:700;color:var(--gold);margin:0 0 12px}h1{font-family:'Barlow Condensed','Arial Narrow',Impact,sans-serif;font-weight:800;letter-spacing:-.019em;line-height:.9;text-transform:uppercase;font-size:54px;margin:0 0 14px}p.lead{color:var(--muted);font-size:14px;line-height:1.55;margin:0 0 26px}
+label{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin:0 0 7px}input{width:100%;font:500 15px 'DM Sans',Arial,sans-serif;color:var(--ink);background:#fff;border:1px solid var(--ink);border-radius:0;padding:13px 14px;margin:0 0 18px;outline-color:var(--gold)}
+button{width:100%;font:800 12px 'DM Sans',Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:16px 24px;border:1px solid var(--ink);background:var(--ink);color:var(--cream);cursor:pointer;transition:.2s}button:hover{transform:translateY(-2px)}
+.msg{font-size:13px;line-height:1.5;padding:12px 14px;margin:0 0 20px;border:1px solid var(--line);background:#fff}.msg.bad{border-color:#b4532a;color:#8a3a17}.small{font-size:12px;color:var(--muted);line-height:1.55;margin:20px 0 0}
+footer{padding:22px;text-align:center;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+</style></head><body>
+<header><div class="nav"><a class="brand" href="/">MEERA SOCIAL<span>/</span></a><a class="back" href="/">Back to site</a></div></header>
+<main><div class="card">
+  <div id="signin">
+    <p class="eyebrow">For our dental practices</p><h1>Client login</h1>
+    <p class="lead">Sign in to see your practice's shot list and what we are working on for you.</p>
+    <div class="msg bad" id="err" hidden></div><div class="msg" id="ok" hidden></div>
+    <form method="post" action="https://brandhub-pro-claude-production.up.railway.app/api/client/login" autocomplete="on">
+      <label for="email">Email</label><input id="email" name="email" type="email" autocomplete="username" required>
+      <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit">Sign in</button>
+    </form>
+    <p class="small">First time here? Use the link in your welcome email to create your password. Lost it? Reply to any email from Meera and we will send a new link.</p>
+  </div>
+  <div id="create" hidden>
+    <p class="eyebrow">Welcome to Meera Social</p><h1>Create your password</h1>
+    <p class="lead">Choose a password for your practice's account. At least 10 characters. You will use it with your email to sign in.</p>
+    <div class="msg bad" id="err2" hidden></div>
+    <form method="post" action="https://brandhub-pro-claude-production.up.railway.app/api/client/setup" autocomplete="off">
+      <input type="hidden" name="token" id="token">
+      <label for="np">New password</label><input id="np" name="password" type="password" autocomplete="new-password" minlength="10" required>
+      <label for="np2">Type it again</label><input id="np2" name="password2" type="password" autocomplete="new-password" minlength="10" required>
+      <button type="submit">Create account</button>
+    </form>
+  </div>
+</div></main>
+<footer>Meera Social · Private client area</footer>
+<script>
+(function(){var q=new URLSearchParams(location.search),e=q.get('e'),s=q.get('setup');
+ var words={'1':'That email and password do not match. Please try again.','wait':'Too many tries. Please wait 15 minutes and try again.','down':'We could not sign you in just now. Please try again in a minute.','link':'That link has been used or has run out. Reply to any email from Meera and we will send a new one.','short':'Your password needs at least 10 characters.','match':'The two passwords were not the same. Please type them again.'};
+ function show(id,t){var el=document.getElementById(id);el.textContent=t;el.hidden=false}
+ if(s&&/^[a-f0-9]{48}$/.test(s)){document.getElementById('signin').hidden=true;document.getElementById('create').hidden=false;document.getElementById('token').value=s;if(e&&words[e])show('err2',words[e])}
+ else{if(e&&words[e])show('err',words[e]);if(q.get('out'))show('ok','You are signed out.')}
+ if(history.replaceState&&!s)history.replaceState(null,'',location.pathname);
+})();
+</script>
+</body></html>
