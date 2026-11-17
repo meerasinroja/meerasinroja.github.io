@@ -8,12 +8,12 @@
   <title>CA Construction Group · Marketing Diagnosis</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet" />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { background: #faf6ef; color: #221e18; font-family: 'DM Sans', sans-serif; line-height: 1.6; overflow-x: hidden; }
     .wrap { max-width: 1020px; margin: 0 auto; padding: 0 22px; position: relative; }
-    .serif { font-family: 'Playfair Display', serif; }
+    .serif { font-family: 'DM Sans', Arial, sans-serif; }
     /* Her order 2026-08-20: every section label in CAPS, bigger, bold. */
     .eyebrow { color: #b9884c; font-size: 16px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
     .eyebrow-hero { font-size: 20px; }
@@ -23,11 +23,11 @@
     .hl-green { background: rgba(34,125,62,.22); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .15em; }
     .hl-red { background: rgba(175,26,26,.19); box-decoration-break: clone; -webkit-box-decoration-break: clone; padding: 0 .18em; text-transform: uppercase; }
     [hidden] { display: none !important; } /* sections she hid 2026-08-21 — drop the attribute to bring one back */
-    .eyebrow-green, .eyebrow-h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 4.4vw, 40px); font-weight: 700; letter-spacing: 0; line-height: 1.12; margin-bottom: 16px; }
+    .eyebrow-green, .eyebrow-h2 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: clamp(28px, 4.4vw, 40px); font-weight: 700; letter-spacing: 0; line-height: 1.12; margin-bottom: 16px; }
     .eyebrow-green { color: #221e18; }
     .eyebrow-h2 { color: #f9f3e8; }
     .strike-red { text-decoration: line-through; text-decoration-color: #af1a1a; text-decoration-thickness: 1.5px; }
-    h1, h2 { font-family: 'Playfair Display', serif; font-weight: 700; color: #221e18; line-height: 1.12; }
+    h1, h2 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 700; color: #221e18; line-height: 1.12; text-transform: uppercase }
     h1 { font-size: clamp(38px, 6vw, 60px); }
     h2 { font-size: clamp(28px, 4.4vw, 40px); }
     section { padding: 72px 0; position: relative; }
@@ -47,7 +47,7 @@
     .hero-img { display: block; width: 100%; height: auto; aspect-ratio: 335 / 460; border-radius: 12px; object-fit: cover; object-position: center top; }
     /* Speech bubble — big, bold, pastel green with a dark outline + tail, sits over the photo */
     .bubble { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); width: 86%; background: #cfe9d3; border: 4px solid #1a1a1a; border-radius: 22px; padding: 16px 18px; text-align: center; z-index: 4; box-shadow: 0 12px 30px rgba(0,0,0,.25); }
-    .bubble span { display: block; font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(24px, 3.4vw, 34px); line-height: 1.12; color: #1a1a1a; text-transform: uppercase; letter-spacing: .01em; }
+    .bubble span { display: block; font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 900; font-size: clamp(24px, 3.4vw, 34px); line-height: 1.12; color: #1a1a1a; text-transform: uppercase; letter-spacing: .01em; }
     .bubble em { font-style: normal; color: #227d3e; }
     /* tail points UP at the two of them (bubble sits over the ground at the bottom, never over their sign) */
     .bubble::after { content: ""; position: absolute; left: 62%; top: -26px; width: 0; height: 0; border-left: 18px solid transparent; border-right: 18px solid transparent; border-bottom: 26px solid #1a1a1a; transform: translateX(-50%); }
@@ -60,7 +60,7 @@
     /* stats */
     .stats { background: #fff; border-top: 1px solid rgba(34,30,24,.06); border-bottom: 1px solid rgba(34,30,24,.06); padding: 40px 0; }
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
-    .stat .n { font-family: 'Playfair Display', serif; font-size: 30px; font-weight: 700; color: #8a6a3c; }
+    .stat .n { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: 30px; font-weight: 700; color: #8a6a3c; }
     .stat .l { font-size: 14px; font-weight: 700; color: #3d372f; margin-top: 4px; }
     /* generic split section */
     .split { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: start; }
@@ -76,13 +76,13 @@
     .panel { background: #fdf9f2; border-radius: 22px; box-shadow: 0 18px 50px rgba(90,70,40,.10); padding: 52px 56px; max-width: 640px; margin: 0 auto; position: relative; z-index: 1; }
     .tanbg { background: #eddcc4; }
     .quote-tan { background: #c29455; color: #fff; border-radius: 14px; padding: 26px 28px; margin-top: 26px; font-weight: 600; font-size: 14.5px; box-shadow: 6px 8px 0 rgba(90,70,40,.18); }
-    .quote-tan .qm { font-family: 'Playfair Display', serif; font-size: 26px; line-height: 0; display: block; margin-bottom: 12px; }
+    .quote-tan .qm { font-family: 'DM Sans', Arial, sans-serif; font-size: 26px; line-height: 0; display: block; margin-bottom: 12px; }
     /* issue */
     .center { text-align: center; }
-    .issue-quote { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.4vw, 30px); font-weight: 700; margin: 22px auto 14px; max-width: 560px; }
+    .issue-quote { font-family: 'DM Sans', Arial, sans-serif; font-size: clamp(22px, 3.4vw, 30px); font-weight: 700; margin: 22px auto 14px; max-width: 560px; }
     .issue-body { max-width: 520px; margin: 0 auto; font-size: 14px; font-weight: 700; color: #221e18; }
     .ad-box { background: #fff; border: 3px solid #1a1a1a; border-radius: 16px; box-shadow: 0 14px 40px rgba(90,70,40,.12); max-width: 720px; margin: 36px auto 0; padding: 28px 30px; text-align: left; }
-    .ad-box h3 { font-family: 'Playfair Display', serif; font-size: clamp(22px, 3.2vw, 30px); font-weight: 700; margin-bottom: 12px; }
+    .ad-box h3 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: clamp(22px, 3.2vw, 30px); font-weight: 700; margin-bottom: 12px; text-transform: uppercase }
     .ad-box p { font-size: 15.5px; font-weight: 600; color: #221e18; }
     .comp-table { background: #fff; border-radius: 14px; box-shadow: 0 14px 40px rgba(90,70,40,.10); max-width: 700px; margin: 40px auto 0; overflow: hidden; }
     .comp-row { display: grid; grid-template-columns: 170px 1fr; gap: 14px; padding: 14px 20px; font-size: 12.5px; }
@@ -100,7 +100,7 @@
     .shift-row + .shift-row { border-top: 1px solid rgba(34,30,24,.07); }
     .shift-row .from { color: #4a443b; background: rgba(175,26,26,.14); border-radius: 8px; padding: 8px 10px; }
     .shift-row .to { color: #221e18; font-weight: 700; background: rgba(34,125,62,.16); border-radius: 8px; padding: 8px 10px; }
-    .big-quote { background: #f6e7d2; border-radius: 14px; padding: 30px 34px; margin-top: 34px; font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(17px, 2.4vw, 21px); line-height: 1.5; color: #221e18; }
+    .big-quote { background: #f6e7d2; border-radius: 14px; padding: 30px 34px; margin-top: 34px; font-family: 'DM Sans', Arial, sans-serif; font-weight: 700; font-size: clamp(17px, 2.4vw, 21px); line-height: 1.5; color: #221e18; }
     /* trust */
     .trust { background: #f7ecdf; }
     .trust-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 44px; align-items: center; }
@@ -131,7 +131,7 @@
     .contact-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
     .contact-row .btn { text-transform: uppercase; letter-spacing: .04em; font-size: 17px; font-weight: 700; padding: 15px 26px; min-width: 170px; justify-content: center; background: #cfe9d3; color: #1a1a1a; border: 3px solid #1a1a1a; } /* pastel green, her order */
     .reach { margin-top: 16px; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; background: #cfe9d3; border: 3px solid #1a1a1a; border-radius: 16px; padding: 14px 18px; }
-    .reach-big { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: #1a1a1a; }
+    .reach-big { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: clamp(22px, 4vw, 32px); font-weight: 700; color: #1a1a1a; }
     .reach .btn { background: #1a1a1a; color: #fff; border: 0; }
     .reply-status { text-align: center; font-size: 13.5px; font-weight: 600; min-height: 1.2em; }
     .reply-status.ok { color: #227d3e; }
@@ -157,6 +157,7 @@
   </style>
   <script>window.MS_SLUG = "ca-construction";</script>
   <script src="/ms-analytics.js?v=4" defer></script>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -354,8 +355,8 @@
   .v2-divider { border-top: 3px dashed #c9b9a6; margin: 8px 0 28px; text-align: center; }
   .v2-divider span { display: inline-block; background: #faf6ef; padding: 6px 14px; transform: translateY(-50%); font-size: 12px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #8a6a3c; }
   .v2 .kicker { font-size: 14px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: #b9884c; margin-bottom: 12px; text-align: center; }
-  .v2 h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(30px, 5vw, 46px); line-height: 1.1; text-align: center; margin: 0 0 16px; }
-  .v2 h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(24px, 3.6vw, 32px); line-height: 1.15; text-align: center; margin: 0 0 14px; }
+  .v2 h2 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 800; font-size: clamp(30px, 5vw, 46px); line-height: 1.1; text-align: center; margin: 0 0 16px; text-transform: uppercase }
+  .v2 h3 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 700; font-size: clamp(24px, 3.6vw, 32px); line-height: 1.15; text-align: center; margin: 0 0 14px; text-transform: uppercase }
   .v2 p { font-size: 17px; line-height: 1.6; }
   .v2 .lead { font-size: 19px; font-weight: 600; text-align: center; max-width: 600px; margin: 0 auto 18px; }
   .v2 .block { padding: 48px 0; }
@@ -397,7 +398,7 @@
   .v2 .qa p { font-size: 15px; color: #4a443b; }
   .v2 .reach2 { margin: 18px auto 0; display: none; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; background: #cfe9d3; border: 3px solid #1a1a1a; border-radius: 16px; padding: 14px 18px; max-width: 520px; }
   .v2 .reach2.on { display: flex; }
-  .v2 .reach2 .big { font-family: 'Playfair Display', serif; font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: #1a1a1a; }
+  .v2 .reach2 .big { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: #1a1a1a; }
   .v2 .reach2 .btn { background: #1a1a1a; color: #fff; border: 0; }
   @media (max-width: 560px) { .v2 .fears, .v2 .shift .row { grid-template-columns: 1fr; } .v2 .dark { padding: 34px 18px; } }
 </style>
@@ -442,7 +443,7 @@
     <p class="kicker">Why the ads have not worked</p>
     <h3>Your message sounds like every other builder.</h3>
     <div class="redbox">
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,26px);font-weight:700;text-align:center"><span class="strike">&ldquo;We do quality work. We handle the process. Call us.&rdquo;</span></p>
+      <p style="font-family:'DM Sans', Arial, sans-serif;font-size:clamp(20px,3vw,26px);font-weight:700;text-align:center"><span class="strike">&ldquo;We do quality work. We handle the process. Call us.&rdquo;</span></p>
       <p style="margin-top:12px;font-weight:700;text-align:center">Too vague, because every builder says they do quality work. It does not show your competitive advantage, so the homeowner has nothing to choose you on except price.</p>
     </div>
     <p style="margin-top:18px"><b>The ad itself is GENERIC.</b> &ldquo;Need a backyard home? Get a free quote&rdquo; attracts people looking for the cheapest price. Those people collect several quotes and choose the lowest bid. You paid to find price shoppers, then lost them to the cheapest competitor. That is the whole leak.</p>
@@ -486,7 +487,7 @@
       <div class="row"><div class="from"><span class="lbl">Generic content</span>Photos of job sites.</div><div class="to"><span class="lbl">Your content</span>&ldquo;Before you spend $100,000 or more on your home, make sure the builder is doing the hidden work right, not just making it look good in photos.&rdquo;</div></div>
     </div>
     <div class="greenbox">
-      <p style="font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(18px,2.6vw,22px);text-align:center">&ldquo;Building a backyard home is not just about putting up walls. We handle plans, permits, city inspections, and construction so you do not have to fight with the city or worry about mistakes.&rdquo;</p>
+      <p style="font-family:'DM Sans', Arial, sans-serif;font-weight:700;font-size:clamp(18px,2.6vw,22px);text-align:center">&ldquo;Building a backyard home is not just about putting up walls. We handle plans, permits, city inspections, and construction so you do not have to fight with the city or worry about mistakes.&rdquo;</p>
       <p style="text-align:center;margin-top:8px;font-size:14px;font-weight:700">That sentence is your whole campaign.</p>
     </div>
   </div>
@@ -600,7 +601,7 @@
     <p class="kicker">Why the ads have not worked</p>
     <h3>Your message sounds like every other builder.</h3>
     <div class="redbox">
-      <p style="font-family:'Playfair Display',serif;font-size:clamp(20px,3vw,26px);font-weight:700;text-align:center"><span class="strike">&ldquo;We do quality work. We handle the process. Call us.&rdquo;</span></p>
+      <p style="font-family:'DM Sans', Arial, sans-serif;font-size:clamp(20px,3vw,26px);font-weight:700;text-align:center"><span class="strike">&ldquo;We do quality work. We handle the process. Call us.&rdquo;</span></p>
       <p style="margin-top:12px;font-weight:700;text-align:center">Too vague, because every builder says they do quality work. It does not show your competitive advantage, so the homeowner has nothing to choose you on except price.</p>
     </div>
     <p style="margin-top:18px"><b>The ad itself is GENERIC.</b> &ldquo;Need a backyard home? Get a free quote&rdquo; attracts people looking for the cheapest price. Those people collect several quotes and choose the lowest bid. You paid to find price shoppers, then lost them to the cheapest competitor. That is the whole leak.</p>
@@ -644,7 +645,7 @@
       <div class="row"><div class="from"><span class="lbl">Generic content</span>Photos of job sites.</div><div class="to"><span class="lbl">Your content</span>&ldquo;Before you spend $100,000 or more on your home, make sure the builder is doing the hidden work right, not just making it look good in photos.&rdquo;</div></div>
     </div>
     <div class="greenbox">
-      <p style="font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(18px,2.6vw,22px);text-align:center">&ldquo;Building a backyard home is not just about putting up walls. We handle plans, permits, city inspections, and construction so you do not have to fight with the city or worry about mistakes.&rdquo;</p>
+      <p style="font-family:'DM Sans', Arial, sans-serif;font-weight:700;font-size:clamp(18px,2.6vw,22px);text-align:center">&ldquo;Building a backyard home is not just about putting up walls. We handle plans, permits, city inspections, and construction so you do not have to fight with the city or worry about mistakes.&rdquo;</p>
       <p style="text-align:center;margin-top:8px;font-size:14px;font-weight:700">That sentence is your whole campaign.</p>
     </div>
   </div>
@@ -956,8 +957,8 @@
   .v4-divider { border-top: 3px solid #17130e; margin: 8px 0 28px; text-align: center; }
   .v4-divider span { display: inline-block; background: #faf6ef; padding: 6px 16px; transform: translateY(-50%); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #17130e; }
   .v4 .eyebrow { display: inline-block; background: #eae2c2; color: #6b5215; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 6px 14px; border-radius: 999px; margin-bottom: 16px; }
-  .v4 h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(32px, 5.4vw, 50px); line-height: 1.05; margin: 0 0 16px; }
-  .v4 h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(24px, 3.6vw, 32px); line-height: 1.12; margin: 0 0 16px; }
+  .v4 h1 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 900; font-size: clamp(32px, 5.4vw, 50px); line-height: 1.05; margin: 0 0 16px; text-transform: uppercase }
+  .v4 h2 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 800; font-size: clamp(24px, 3.6vw, 32px); line-height: 1.12; margin: 0 0 16px; text-transform: uppercase }
   .v4 .lede { font-size: 18px; font-weight: 600; line-height: 1.5; color: #2a251d; max-width: 620px; }
   .v4 .hl { background: #f6d67a; padding: 0 .12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
   .v4 p { font-size: 15.5px; line-height: 1.65; color: #2a251d; }
@@ -976,7 +977,7 @@
   .v4 .totalrow { display: flex; justify-content: space-between; align-items: center; background: #f6d67a; border-radius: 10px; padding: 14px 18px; margin-top: 6px; font-weight: 800; }
   .v4 .stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #17130e; margin: 22px 0; }
   .v4 .stat-row div { background: #faf6ef; padding: 18px 10px; text-align: center; }
-  .v4 .stat-row .n { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; }
+  .v4 .stat-row .n { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: 24px; font-weight: 800; }
   .v4 .stat-row .l { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: #6b6357; margin-top: 4px; }
   .v4 table.v4t { width: 100%; border-collapse: collapse; margin: 18px 0; font-size: 14px; }
   .v4t th { text-align: left; font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: #6b6357; padding: 8px 10px; border-bottom: 2px solid #17130e; }
@@ -1096,13 +1097,13 @@
   <section class="proto" id="protoCompare" hidden style="padding:0 16px 48px">
 <style>
   .cmp { max-width: 920px; margin: 0 auto; color: #17130e; font-family: 'DM Sans', sans-serif; }
-  .cmp h1 { font-family: 'Playfair Display', serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 40px); line-height: 1.1; margin: 0 0 10px; text-align: center; }
+  .cmp h1 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 900; font-size: clamp(26px, 4.4vw, 40px); line-height: 1.1; margin: 0 0 10px; text-align: center; text-transform: uppercase }
   .cmp .lede { text-align: center; font-size: 15px; color: #4a443b; max-width: 620px; margin: 0 auto 30px; }
   .cmp .source { text-align: center; font-size: 11px; color: #8f887c; margin-bottom: 34px; }
   .cmp .source a { color: #8f887c; }
   .cmp-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 3px; background: #17130e; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.15); }
   @media (max-width: 680px) { .cmp-grid { grid-template-columns: 1fr; gap: 4px; } }
-  .cmp-vs { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 5; width: 54px; height: 54px; border-radius: 50%; background: #17130e; border: 3px solid #f6d67a; color: #f6d67a; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 15px; letter-spacing: .03em; }
+  .cmp-vs { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); z-index: 5; width: 54px; height: 54px; border-radius: 50%; background: #17130e; border: 3px solid #f6d67a; color: #f6d67a; display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 900; font-size: 15px; letter-spacing: .03em; }
   @media (max-width: 680px) { .cmp-vs { top: auto; bottom: -27px; } }
   .cmp-col { position: relative; overflow: hidden; display: flex; flex-direction: column; }
   .cmp-stamp { position: absolute; top: 22px; right: -46px; width: 190px; transform: rotate(38deg); text-align: center; padding: 7px 0; font-size: 12px; font-weight: 900; text-transform: uppercase; letter-spacing: .08em; z-index: 3; box-shadow: 0 4px 10px rgba(0,0,0,.25); }
@@ -1113,7 +1114,7 @@
   .cmp-them .cmp-tag { background: #ececec; color: #555; }
   .cmp-them .cmp-body { padding: 30px 24px 26px; flex: 1; opacity: .8; filter: saturate(.6); }
   .cmp-them .cmp-hero { height: 130px; border-radius: 10px; background: linear-gradient(135deg,#dfe6ee,#c9d3dd); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #6b7684; text-align: center; padding: 10px; margin-bottom: 18px; }
-  .cmp-them h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #2456a6; margin: 0 0 10px; }
+  .cmp-them h3 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: 24px; font-weight: 800; color: #2456a6; margin: 0 0 10px; text-transform: uppercase }
   .cmp-them p.sub { font-size: 13.5px; color: #555; line-height: 1.55; margin: 0 0 20px; }
   .cmp-them .cmp-cta { display: inline-block; background: #2456a6; color: #fff; font-size: 12px; font-weight: 800; text-transform: uppercase; padding: 11px 20px; border-radius: 6px; }
   .cmp-them .cmp-note { margin-top: 18px; font-size: 12px; color: #a83232; font-weight: 700; }
@@ -1121,7 +1122,7 @@
   .cmp-us .cmp-tag { background: #f6d67a; color: #17130e; }
   .cmp-us .cmp-body { padding: 30px 24px 26px; flex: 1; color: #faf6ef; }
   .cmp-us .cmp-hero { height: 130px; border-radius: 10px; background: linear-gradient(135deg,#3a2f1f,#17130e); border: 1px dashed rgba(246,214,122,.4); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #d8c9a3; text-align: center; padding: 10px; margin-bottom: 18px; }
-  .cmp-us h3 { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: #f6d67a; margin: 0 0 10px; line-height: 1.15; }
+  .cmp-us h3 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-size: 24px; font-weight: 800; color: #f6d67a; margin: 0 0 10px; line-height: 1.15; text-transform: uppercase }
   .cmp-us h3 .same { color: #faf6ef; opacity: .55; }
   .cmp-us p.sub { font-size: 13.5px; color: #d8cdb8; line-height: 1.55; margin: 0 0 20px; }
   .cmp-us .cmp-cta { display: inline-block; background: #f6d67a; color: #17130e; font-size: 12px; font-weight: 800; text-transform: uppercase; padding: 11px 20px; border-radius: 999px; }
@@ -1177,7 +1178,7 @@
   <section class="proto" id="protoFormula" hidden style="padding:0 16px 48px">
 <style>
   .tpl { max-width: 780px; margin: 0 auto; color: #17130e; font-family: 'DM Sans', sans-serif; }
-  .tpl h2 { font-family: 'Playfair Display', serif; font-weight: 800; font-size: clamp(24px, 3.6vw, 32px); margin: 0 0 18px; }
+  .tpl h2 { font-family: 'Barlow Condensed', 'Arial Narrow', Impact, sans-serif; font-weight: 800; font-size: clamp(24px, 3.6vw, 32px); margin: 0 0 18px; text-transform: uppercase }
   .tpl h3 { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: #6b5215; background: #eae2c2; display: inline-block; padding: 5px 12px; border-radius: 999px; margin: 30px 0 12px; }
   .tpl h3:first-of-type { margin-top: 0; }
   .tpl ol, .tpl ul { margin: 0; padding-left: 20px; }
