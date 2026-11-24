@@ -42,10 +42,38 @@
   function docH() { return Math.max(document.documentElement.scrollHeight, 1); }
   function docW() { return Math.max(document.documentElement.scrollWidth, 1); }
 
+  // Which part of the page is that: the nearest heading above it. And which button was tapped.
+  // (23 Nov 2026: time spent on each part, and the clicked sections, by name.)
+  function partAt(pageY) {
+    var best = "", bestTop = -1;
+    try {
+      var hs = document.querySelectorAll("h1,h2,h3,[data-part]");
+      for (var i = 0; i < hs.length; i++) {
+        var top = hs[i].getBoundingClientRect().top + window.scrollY;
+        if (top <= pageY && top >= bestTop) {
+          var t = (hs[i].getAttribute("data-part") || hs[i].textContent || "").replace(/s+/g, " ").trim().slice(0, 80);
+          if (t) { best = t; bestTop = top; }
+        }
+      }
+    } catch (e) {}
+    return best;
+  }
+  function nameOf(el) {
+    try {
+      var b = el && el.closest ? el.closest("a,button,[role=button],summary,input[type=submit]") : null;
+      if (!b) return "";
+      return (b.getAttribute("aria-label") || b.textContent || b.value || "").replace(/s+/g, " ").trim().slice(0, 60);
+    } catch (e) { return ""; }
+  }
+
   push({ t: "v", vw: window.innerWidth, vh: window.innerHeight });
 
   var maxSp = 0;
-  setInterval(function () { if (document.visibilityState === "visible") push({ t: "b", sec: 5 }); }, 5000);
+  setInterval(function () {
+    if (document.visibilityState !== "visible") return;
+    var mid = window.scrollY + window.innerHeight / 2;
+    push({ t: "b", sec: 5, y: Math.min(1, mid / docH()), vw: window.innerWidth, s: partAt(mid) });
+  }, 5000);
   window.addEventListener("scroll", function () {
     var sp = Math.min(100, (100 * (window.scrollY + window.innerHeight)) / docH());
     if (sp > maxSp) maxSp = sp;
@@ -55,10 +83,10 @@
     var now = Date.now();
     if (now - lastMove < 700) return;
     lastMove = now;
-    push({ t: "m", x: ev.pageX / docW(), y: ev.pageY / docH() });
+    push({ t: "m", x: ev.pageX / docW(), y: ev.pageY / docH(), vw: window.innerWidth });
   }, { passive: true });
   window.addEventListener("click", function (ev) {
-    push({ t: "c", x: ev.pageX / docW(), y: ev.pageY / docH() });
+    push({ t: "c", x: ev.pageX / docW(), y: ev.pageY / docH(), vw: window.innerWidth, s: partAt(ev.pageY), l: nameOf(ev.target) });
     var a = ev.target && ev.target.closest ? ev.target.closest('a[href^="mailto:"],a[href^="tel:"],a[href^="sms:"]') : null; // any call/text/email tap counts as reaching back
     if (a) { push({ t: "e" }); flush(); }
   }, true);
@@ -74,7 +102,11 @@
       .then(function (j) {
         var o = document.createElement("div");
         o.style.cssText = "position:absolute;left:0;top:0;width:100%;height:" + docH() + "px;pointer-events:none;z-index:99999";
+        var onPhone = window.innerWidth < 768;
         (j.points || []).forEach(function (pt) {
+          // A phone and a computer lay the page out differently: show only the dots made on this kind of screen.
+          if (pt.vw != null && (pt.vw < 768) !== onPhone) return;
+          if (pt.vw == null && pt.t === "m" && onPhone) return;
           var d = document.createElement("div");
           var c = pt.t === "c" ? "rgba(220,60,40,.4)" : "rgba(40,90,220,.12)";
           var s = pt.t === "c" ? 34 : 46;
